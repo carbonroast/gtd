@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 64e3720362a765342938855781f6b486
+timeCreated: 1504994804
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - towerone: {instanceID: 0}
+  - towertwo: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
