@@ -17,6 +17,7 @@ public class CreateWorld : MonoBehaviour {
 				childObject.name = i + " " + j;
 				childObject.AddComponent<CanBuild> ();
 				childObject.layer = LayerMask.NameToLayer ("BuildBlock");
+
 			}
 		}
 	}

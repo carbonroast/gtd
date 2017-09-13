@@ -11,17 +11,20 @@ public class Enemy : MonoBehaviour {
 	public int mana;
 	public int speed;
 	protected NavMeshAgent enemy;
-	public List<string> type = new List<string>();
+	//public LayerMask type;
+	//public List<string> type = new List<string>();
+
 	//public GameObject character;
 
 	private int wavepointIndex = 1;
 
 
-		
+
 
 	// Use this for initialization
 	void Start () {
 		gameObject.tag = "Enemy";
+		Type ();
 		enemy = GetComponent<NavMeshAgent> ();
 		FirstPoint ();
 		Movement ();
@@ -41,7 +44,9 @@ public class Enemy : MonoBehaviour {
 
 		}
 	}
-
+	public virtual void Type(){
+		gameObject.layer = LayerMask.NameToLayer ("Air");
+	}
 	public virtual void Movement(){
 		enemy.acceleration = 60;
 	}
@@ -62,6 +67,7 @@ public class Enemy : MonoBehaviour {
 		hp = hp - amount;
 		if (hp <= 0) {
 			Destroy (gameObject);
+			return;
 		}
 
 	}

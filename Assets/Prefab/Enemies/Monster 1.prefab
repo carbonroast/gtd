@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f8d6c80018819ff4ca1a2e4aca17885b, type: 2}
+  - {fileID: 2100000, guid: 7a0729371fa694e46ab6a87e3a63cc72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,11 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5c709bdd3104c4eaa0a3b86a0ab04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  mana: 0
+  hp: 5
+  mana: 5
   speed: 10
-  type:
-  - Ground
 --- !u!136 &136105257667934624
 CapsuleCollider:
   m_ObjectHideFlags: 1

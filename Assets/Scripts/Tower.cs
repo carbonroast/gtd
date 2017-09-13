@@ -6,80 +6,55 @@ using UnityEngine;
 [System.Serializable]
 
 public class Tower : MonoBehaviour {
-	
+
 	[Header ("Values")]
 	public int damage;
 	public int mana;
 	public int fireRate;
-	public int range;
-	public List<string> canHit = new List<string> ();
+	public float range;
+	//public List<string> canHit = new List<string> ();
 	public GameObject projectile;
+	//public LayerMask canHit;
 
-	[Header ("SetValues")]
-	public List<GameObject> targetQueue = new List<GameObject> ();
+
+	[Header ("DoNotTouch")]
+	public Collider[] targetQueue;
 	public Transform firePoint;
 
 
 	void Start () {
-		
+		//canHit = LayerMask.NameToLayer ("Air");
+		range = gameObject.GetComponent<SphereCollider> ().radius;
 	}
-	
+
 
 	void Update () {
-		
+
 	}
-		
+
 
 	public virtual void OnDrawGizmosSelected(){
 		//Gizmos.color = Color.red;
 		//Gizmos.DrawWireSphere (transform.position, range);
 	}
 
-	void OnTriggerEnter(Collider other){
-		//GameObject g = (GameObject)Instantiate (bulletPrefab, transform.position, Quaternion.identity);
-		//g.GetComponent<Bullet> ().target = co.transform;
 
-		if(other.gameObject.tag == "Enemy"){
-			Debug.Log("hit");
-			CanHitCheck(other);
-
-		}
-
-	}
 	void OnTriggerStay(Collider other){
-		if (other != null) {
-			//Debug.Log("Dequeue");
-		} else {
-			Debug.Log("Dequeue");
-			//targetQueue.Dequeue ();		
-		}
-	}
-	void OnTriggerExit(Collider other){
-		//Debug.Log("Dequeue");
-		//targetQueue.Dequeue ();
+		if(other.gameObject.tag == "Enemy"){
+			//if frame rate bad, change to call 10 times a frame
+			targetQueue = Physics.OverlapSphere(transform.position,range, 1 << 9);
+			Attack ();
+		}	
 	}
 
-	void CanHitCheck(Collider other){
-		Enemy enemy = other.GetComponent<Enemy> ();
-		foreach (string type in enemy.type){
-			foreach(string targettype in canHit){
-				if(type == targettype){
-					Debug.Log ("queued");
-					targetQueue.Add(other.gameObject);
-				}
-			}
 
+
+	public virtual void Attack(){
+		if(targetQueue.Length != 0){
+			Debug.Log ("fire at " + targetQueue.Length);
+			GameObject g = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
+			//GameObject g = (GameObject)Instantiate(GetComponent<Projectile>().projectilePrefab, firePoint.position, firePoint.rotation);
+			g.GetComponent<Projectile>().target = targetQueue[0].transform;
 		}
-
 	}
-	void Attack(){
-		/*if(targetQueue != null){
-
-			GameObject g = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.identity);
-			Projectile projectile = g.GetComponent<Projectile>();
-			if(projectile != null){
-				FlightPath(targetQueue);
-			}
-		*/
-		}
 }

@@ -33,12 +33,12 @@ public class TowerController : MonoBehaviour {
 	}
 	void Click(){
 		if (Input.GetMouseButtonDown (0)) {
-			Debug.Log ("down");
+			//Debug.Log ("down");
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 
 			if (Physics.Raycast (ray, out hit, 100f, BuildBlock.value)) {
-				Debug.Log (hit.transform.gameObject.name);
+				//Debug.Log (hit.transform.gameObject.name);
 				bool canBuild = hit.transform.GetComponent<CanBuild>().canBuild;
 				if (canBuild) {
 					GameObject g = (GameObject)Instantiate (towerone);
