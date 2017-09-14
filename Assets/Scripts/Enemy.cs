@@ -9,9 +9,11 @@ public class Enemy : MonoBehaviour {
 
 	public int hp;
 	public int mana;
+	public int damage;
 	public int speed;
 	protected NavMeshAgent enemy;
-	//public LayerMask type;
+	public LayerMask type;
+
 	//public List<string> type = new List<string>();
 
 	//public GameObject character;
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 	public virtual void Type(){
+
 		gameObject.layer = LayerMask.NameToLayer ("Air");
 	}
 	public virtual void Movement(){

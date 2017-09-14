@@ -126,7 +126,7 @@ MonoBehaviour:
   damage: 1
   mana: 1
   fireRate: 1
-  range: 1
+  range: 2
   projectile: {fileID: 1483747131460668, guid: d995bf50ce45d504ab7143f691ce021b, type: 2}
   targetQueue: []
   firePoint: {fileID: 4740539377542614}

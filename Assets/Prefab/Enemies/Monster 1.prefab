@@ -112,7 +112,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   mana: 5
+  damage: 0
   speed: 10
+  type:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!136 &136105257667934624
 CapsuleCollider:
   m_ObjectHideFlags: 1
