@@ -43,7 +43,7 @@ public class TowerController : MonoBehaviour {
 				if (canBuild) {
 					GameObject g = (GameObject)Instantiate (towerone);
 					//GameObject g = (GameObject)Instantiate (selectedTower);
-					g.transform.position = hit.transform.position + Vector3.up;
+					g.transform.position = hit.transform.position + towerone.transform.position;
 					hit.transform.GetComponent<CanBuild>().canBuild = false;
 				}
 

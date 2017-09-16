@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour {
 	public int hp;
 	public int mana;
 	public int damage;
-	public int speed;
+	public float speed;
+	public float minimumSpeed;
 	protected NavMeshAgent enemy;
 	public LayerMask type;
 

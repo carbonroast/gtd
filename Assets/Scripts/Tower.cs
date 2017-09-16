@@ -17,16 +17,16 @@ public class Tower : MonoBehaviour {
 	//public LayerMask canHit;
 
 
-
+	[HideInInspector]
 	public Collider[] targetQueue;
 	public Transform firePoint;
-	[HideInInspector]
+
 	private float fireCountDown = 0f;
 
 	void Start () {
 		//canHit = LayerMask.NameToLayer ("Air");
 		range = gameObject.GetComponent<SphereCollider> ().radius;
-
+		gameObject.GetComponent<SphereCollider> ().isTrigger = true;
 
 	}
 
@@ -56,7 +56,7 @@ public class Tower : MonoBehaviour {
 
 	public virtual void Attack(){
 		if(targetQueue.Length != 0){
-			GameObject g = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
+			GameObject g = (GameObject)Instantiate(projectile, firePoint.position, Quaternion.identity);
 			//GameObject g = (GameObject)Instantiate(GetComponent<Projectile>().projectilePrefab, firePoint.position, firePoint.rotation);
 			g.GetComponent<Projectile>().target = targetQueue[0].transform;
 			g.GetComponent<Projectile>().damage = damage;

@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\TowerController.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower3.cs" />
      <Compile Include="Assets\Scripts\WayPoints.cs" />
+     <None Include="Assets\WatchTower\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
