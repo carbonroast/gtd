@@ -12,8 +12,9 @@ public class Enemy : MonoBehaviour {
 	public int damage;
 	public float speed;
 	public float minimumSpeed;
-	protected NavMeshAgent enemy;
 	public LayerMask type;
+	protected NavMeshAgent enemy;
+
 
 	//public List<string> type = new List<string>();
 

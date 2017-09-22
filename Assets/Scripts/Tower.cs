@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour {
 	public float range;
 	//public List<string> canHit = new List<string> ();
 	public GameObject projectile;
-	//public LayerMask canHit;
+	public LayerMask canHit;
 
 
 	[HideInInspector]
@@ -42,7 +42,7 @@ public class Tower : MonoBehaviour {
 		if(other.gameObject.tag == "Enemy"){
 			//if frame rate bad, change to call 10 times a frame
 
-			targetQueue = Physics.OverlapSphere(transform.position,range, 1 << 9);
+			targetQueue = Physics.OverlapSphere(transform.position,range, canHit.value);
 
 			if (fireCountDown <= 0f) {
 				Attack ();
@@ -62,4 +62,6 @@ public class Tower : MonoBehaviour {
 			g.GetComponent<Projectile>().damage = damage;
 		}
 	}
+
+
 }
