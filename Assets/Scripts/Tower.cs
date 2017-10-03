@@ -25,7 +25,7 @@ public class Tower : MonoBehaviour {
 
 	void Start () {
 		//canHit = LayerMask.NameToLayer ("Air");
-		range = gameObject.GetComponent<SphereCollider> ().radius;
+		gameObject.GetComponent<SphereCollider> ().radius = range;
 		gameObject.GetComponent<SphereCollider> ().isTrigger = true;
 
 	}

@@ -2,26 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour {
-	//public GameObject player;
-	private Vector3 position;
-	protected NavMeshAgent player;
+public class PlayerController : NetworkBehaviour {
 	public LayerMask canMove;
-	// Use this for initialization
-	void Start () {
+	public GameObject towerone;
+	private Vector3 position;
+	public LayerMask BuildBlock;
+	protected NavMeshAgent player;
+	public static Camera playerCam;
+	[HideInInspector]
+	public RaycastHit hit;
+
+
+
+
+	void Start(){
 		player = GetComponent<NavMeshAgent> ();
+		playerCam = GetComponentInChildren<Camera> ();
+		if (playerCam == null) {
+			Debug.Log ("PlayerController: No camera referenced!");
+			this.enabled = false;
+		}
+	}   
+
+	void FixedUpdate () {
+		if (!isLocalPlayer) {
+			return;
+		}
+		CmdClick ();
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		Click ();
-	}
-	void Click(){
-		if (Input.GetMouseButtonDown (0)) {
+
+	//[Command]
+	void CmdClick(){
+		if (Input.GetMouseButtonDown (1)) {
 			//Debug.Log ("down");
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
+			Debug.Log (transform.name + "has clicked " + Input.mousePosition);
+			Ray ray = GetComponentInChildren<Camera>().ScreenPointToRay  (Input.mousePosition);
+		
 
 			if (Physics.Raycast (ray, out hit, 100f, canMove.value)) {
 				Debug.Log ("position is " + hit.point);
@@ -34,5 +53,5 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	}
-
 }
+

@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 23595821836838490}
   - component: {fileID: 135945032265734588}
   - component: {fileID: 208100719967099044}
-  - component: {fileID: 114248585824149742}
+  - component: {fileID: 114000924291085554}
+  - component: {fileID: 114613989396417430}
   m_Layer: 0
   m_Name: tower3
   m_TagString: Untagged
@@ -112,7 +113,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033599867910844}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114248585824149742
+--- !u!114 &114000924291085554
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,16 +121,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033599867910844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9959ef2cd9a35d43b9b03922651996e, type: 3}
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  mana: 1
-  fireRate: 1
-  range: 2
-  projectile: {fileID: 1483747131460668, guid: d995bf50ce45d504ab7143f691ce021b, type: 2}
-  targetQueue: []
-  firePoint: {fileID: 4740539377542614}
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 245
+    i1: 245
+    i2: 215
+    i3: 233
+    i4: 209
+    i5: 25
+    i6: 12
+    i7: 148
+    i8: 57
+    i9: 180
+    i10: 0
+    i11: 108
+    i12: 218
+    i13: 159
+    i14: 128
+    i15: 128
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114613989396417430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033599867910844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!135 &135945032265734588
 SphereCollider:
   m_ObjectHideFlags: 1

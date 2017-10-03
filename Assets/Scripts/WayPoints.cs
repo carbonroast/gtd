@@ -30,7 +30,7 @@ public class WayPoints : MonoBehaviour {
 		}*/
 	}
 	void Path(){
-		i = 1;
+
 		for (int i = 0; i < transform.childCount; i++) {
 			destination.Add (transform.GetChild (i));
 		}
