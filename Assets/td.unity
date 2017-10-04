@@ -760,7 +760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25f3043bab5f004b9e80aae426118b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildPlace: {fileID: 1505600909061656, guid: 1d586a09c30f7cf40b66fcc981ce8782, type: 2}
+  tile: {fileID: 1505600909061656, guid: 1d586a09c30f7cf40b66fcc981ce8782, type: 2}
+  selectionSquare: {fileID: 1909506210605238, guid: 26946efa20e460e4497870a5b0b08c27,
+    type: 2}
+  tetherRange: {fileID: 1576029510414984, guid: 8c1b633f93518fb49b33ab1c2460d8bb,
+    type: 2}
   xSize: 10
   ySize: 10
 --- !u!114 &1537420067

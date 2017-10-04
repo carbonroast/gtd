@@ -58,9 +58,7 @@
      <Compile Include="Assets\RTS_Camera\Demo\DemoScene.cs" />
      <Compile Include="Assets\RTS_Camera\Demo\TargetSelector.cs" />
      <Compile Include="Assets\RTS_Camera\Scripts\RTS_Camera.cs" />
-     <Compile Include="Assets\Scripts\BuildPlaceManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\CanBuild.cs" />
      <Compile Include="Assets\Scripts\CreateWorld.cs" />
      <Compile Include="Assets\Scripts\CSVParser.cs" />
      <Compile Include="Assets\Scripts\Enemies\RedCapsule.cs" />
@@ -69,7 +67,11 @@
      <Compile Include="Assets\Scripts\PlayerSetup.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Projectile\Bullet.cs" />
+     <Compile Include="Assets\Scripts\SelectionSquare.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
+     <Compile Include="Assets\Scripts\TetherRange.cs" />
+     <Compile Include="Assets\Scripts\Tile.cs" />
+     <Compile Include="Assets\Scripts\TilesManager.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />
      <Compile Include="Assets\Scripts\TowerController.cs" />
      <Compile Include="Assets\Scripts\TowerList.cs" />

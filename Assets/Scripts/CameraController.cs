@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CameraController : NetworkBehaviour {
+public class CameraController : MonoBehaviour {
 
 
 	public float panSpeed = 20f;
@@ -13,6 +13,15 @@ public class CameraController : NetworkBehaviour {
 	public float minY = 20f;
 	public float maxY = 120f;
 
+	private Quaternion rotation;
+
+	void Awake(){
+		rotation = transform.rotation;
+	}
+
+	void LateUpdate(){
+		transform.rotation = rotation;
+	}
 	// Update is called once per frame
 	void FixedUpdate () {
 

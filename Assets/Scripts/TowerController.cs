@@ -41,12 +41,12 @@ public class TowerController : NetworkBehaviour {
 		}
 	}
 	[Command]
-	void CmdClick(string buildblock){
-		bool canBuild = BuildPlaceManager.GetBuildPlace (buildblock).GetComponent<CanBuild>().canBuild;
+	void CmdClick(string tile){
+		bool canBuild = TilesManager.GetTiles (tile).GetComponent<Tile>().canBuild;
 		if (canBuild) {
 			GameObject g = (GameObject)Instantiate (towerone);
-			g.transform.position = BuildPlaceManager.GetBuildPlace (buildblock).transform.position + towerone.transform.position;
-			BuildPlaceManager.GetBuildPlace (buildblock).GetComponent<CanBuild> ().canBuild = false;
+			g.transform.position = TilesManager.GetTiles (tile).transform.position + towerone.transform.position;
+			TilesManager.GetTiles (tile).GetComponent<Tile> ().canBuild = false;
 			NetworkServer.Spawn (g);
 			Debug.Log (" Has Built");
 		} else {

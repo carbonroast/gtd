@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114865569393692082}
   - component: {fileID: 114013120314114786}
   m_Layer: 0
-  m_Name: BuildPlace
+  m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

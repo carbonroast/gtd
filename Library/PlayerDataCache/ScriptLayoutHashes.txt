@@ -117,6 +117,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 10df46396e061e3e8faff5ec4815169a Assembly-CSharp.dll:.Projectile
 d78da10fc6fe2ebb0bfa7bfae15012c5 Assembly-CSharp.dll:UnityEngine.AI.NavMeshModifierVolume
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildPlaceManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.WayPoints
 ed5b1294bf25c955351a414cffe1c3ab Assembly-CSharp.dll:RTS_Cam.RTS_Camera
 fbce19c26494a4d299a31bd54b44768b Assembly-CSharp.dll:.CSVParser
@@ -152,4 +153,3 @@ a02648c1063bbf759dd955ced2ed9966 Assembly-CSharp.dll:.CanBuild
 bccf344d6edcee1a3ff4347e7319b955 Assembly-CSharp.dll:.PlayerController
 b15cbcf1b5d5f34856634a1c65bfc2c9 Assembly-CSharp.dll:.Enemy
 cadce1927d585ab452b63cdc6c4e52ab Assembly-CSharp.dll:.PlayerSetup
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BuildPlaceManager

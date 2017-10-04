@@ -11,6 +11,9 @@ public class PlayerController : NetworkBehaviour {
 	public LayerMask BuildBlock;
 	protected NavMeshAgent player;
 	public static Camera playerCam;
+
+	public static bool newMouseOver;
+
 	[HideInInspector]
 	public RaycastHit hit;
 
@@ -18,6 +21,7 @@ public class PlayerController : NetworkBehaviour {
 
 
 	void Start(){
+		newMouseOver = true;
 		player = GetComponent<NavMeshAgent> ();
 		playerCam = GetComponentInChildren<Camera> ();
 		if (playerCam == null) {

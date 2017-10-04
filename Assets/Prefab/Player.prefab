@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 92154132141339722}
   - component: {fileID: 81063373997923556}
   - component: {fileID: 108193802016568158}
+  - component: {fileID: 114878202009966988}
+  - component: {fileID: 114226449056074442}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -225,6 +227,38 @@ MonoBehaviour:
   BuildBlock:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &114226449056074442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730457390723668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 130
+    i1: 160
+    i2: 100
+    i3: 150
+    i4: 227
+    i5: 233
+    i6: 182
+    i7: 52
+    i8: 10
+    i9: 157
+    i10: 189
+    i11: 230
+    i12: 65
+    i13: 146
+    i14: 132
+    i15: 192
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114404404549836748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,6 +313,23 @@ MonoBehaviour:
   BuildBlock:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &114878202009966988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730457390723668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d368ede248cd0b6489702e4ada64ecf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panSpeed: 20
+  panBorderThickness: 20
+  panLimit: {x: 0, y: 0}
+  scrollSpeed: 20
+  minY: 20
+  maxY: 120
 --- !u!114 &114969927452409656
 MonoBehaviour:
   m_ObjectHideFlags: 1
