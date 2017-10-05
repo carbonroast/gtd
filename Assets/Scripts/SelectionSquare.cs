@@ -38,7 +38,7 @@ public class SelectionSquare : MonoBehaviour {
 	void OnMouseOver(){
 
 		if(PlayerController.newMouseOver){
-			Debug.Log ("mouseOver");
+			//Debug.Log ("mouseOver");
 			SelectBuildLocation();
 		}
 	}
@@ -51,7 +51,7 @@ public class SelectionSquare : MonoBehaviour {
 
 			PlayerController.newMouseOver = true;
 			//_grid = this.transform.parent.GetComponent<SelectionSquare>()._grid ;
-			Debug.Log (PlayerController.newMouseOver);
+			//Debug.Log (PlayerController.newMouseOver);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class SelectionSquare : MonoBehaviour {
 		for(int i=0; i < _grid.Count; ++i){
 			TilesManager.GetTiles (_grid[i]).GetComponent<Renderer> ().material.SetColor ("_Color",Color.blue);
 		}
-		Debug.Log (PlayerController.newMouseOver);
+		//Debug.Log (PlayerController.newMouseOver);
 	}
 
 }

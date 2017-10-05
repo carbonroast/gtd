@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[System.Serializable]
+
 
 public class Enemy : MonoBehaviour {
 
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour {
 		gameObject.tag = "Enemy";
 		Type ();
 		enemy = GetComponent<NavMeshAgent> ();
-		FirstPoint ();
+		//FirstPoint ();
 		Movement ();
 	}
 
@@ -43,10 +43,10 @@ public class Enemy : MonoBehaviour {
 		//enemy.speed = speed;
 
 
-		if(Vector3.Distance (this.transform.position, enemy.destination) <= 1.0f){
-			GetNextWayPoint();
+		//if(Vector3.Distance (this.transform.position, enemy.destination) <= 1.0f){
+			//GetNextWayPoint();
 
-		}
+		//}
 	}
 	public virtual void Type(){
 

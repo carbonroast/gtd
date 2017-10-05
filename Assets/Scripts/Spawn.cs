@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Spawn : MonoBehaviour {
+public class Spawn : NetworkBehaviour {
 	public GameObject enemyPrefab;
 	public Transform spawnPoint;
 	public float interval = 3;
 
 	private int waveNumber;
 	// Use this for initialization
-	void Start () {
-		InvokeRepeating ("SpawnNext",interval,interval);
+	public override void OnStartServer(){
+		for (int i = 0; i < interval; i++) {
+			SpawnNext ();
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -19,6 +23,7 @@ public class Spawn : MonoBehaviour {
 	}
 
 	void SpawnNext(){
-		Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		GameObject enemy = (GameObject)Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		NetworkServer.Spawn (enemy);
 	}
 }

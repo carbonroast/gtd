@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 81063373997923556}
   - component: {fileID: 108193802016568158}
   - component: {fileID: 114878202009966988}
-  - component: {fileID: 114226449056074442}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -227,38 +226,6 @@ MonoBehaviour:
   BuildBlock:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &114226449056074442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1730457390723668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 130
-    i1: 160
-    i2: 100
-    i3: 150
-    i4: 227
-    i5: 233
-    i6: 182
-    i7: 52
-    i8: 10
-    i9: 157
-    i10: 189
-    i11: 230
-    i12: 65
-    i13: 146
-    i14: 132
-    i15: 192
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114404404549836748
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,39 +14,53 @@ public class CameraController : MonoBehaviour {
 	public float maxY = 120f;
 
 	private Quaternion rotation;
+	private Vector3 position;
 
 	void Awake(){
 		rotation = transform.rotation;
+		position = new Vector3 (5, 12, -7);
+
 	}
 
 	void LateUpdate(){
 		transform.rotation = rotation;
-	}
-	// Update is called once per frame
-	void FixedUpdate () {
+		transform.position = position;
 
-		Vector3 pos = transform.position;
+
 
 		if (Input.GetKey (KeyCode.UpArrow) /*|| Input.mousePosition.y >= Screen.height - panBorderThickness*/) {
-			pos.z += panSpeed * Time.deltaTime;
+			position.z += panSpeed * Time.deltaTime;
 		}
 		if (Input.GetKey (KeyCode.DownArrow) /*|| Input.mousePosition.y <= panBorderThickness*/) {
-			pos.z -= panSpeed * Time.deltaTime;
+			position.z -= panSpeed * Time.deltaTime;
 		}
 		if (Input.GetKey (KeyCode.RightArrow) /*|| Input.mousePosition.x >= Screen.width - panBorderThickness*/) {
-			pos.x += panSpeed * Time.deltaTime;
+			position.x += panSpeed * Time.deltaTime;
 		}
 		if (Input.GetKey (KeyCode.LeftArrow) /*|| Input.mousePosition.y <= panBorderThickness*/) {
-			pos.x -= panSpeed * Time.deltaTime;
+			position.x -= panSpeed * Time.deltaTime;
 		}
 		float scroll = Input.GetAxis ("Mouse ScrollWheel");
-		pos.y += scroll * scrollSpeed * 100f * Time.deltaTime;
+		position.y += scroll * scrollSpeed * 100f * Time.deltaTime;
 
-		pos.x = Mathf.Clamp (pos.x, -panLimit.x, panLimit.x);
-		pos.y = Mathf.Clamp (pos.y, minY, maxY);
-		pos.z = Mathf.Clamp (pos.z, -panLimit.y, panLimit.y);
 
-		transform.position = pos;
+		/*//keeping camera in bounds
+		newposition.x = Mathf.Clamp (newposition.x, -panLimit.x, panLimit.x);
+		newposition.y = Mathf.Clamp (newposition.y, minY, maxY);
+		newposition.z = Mathf.Clamp (newposition.z, -panLimit.y, panLimit.y);
+		*/
+
+
+
+	}
+	// Update is called once per frame
+
+	void FixedUpdate () {
+
+//		Vector3 pos = transform.localPosition;
+//
+
+//
 	}
 }
 
