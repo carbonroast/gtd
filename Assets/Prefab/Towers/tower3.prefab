@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 208100719967099044}
   - component: {fileID: 114000924291085554}
   - component: {fileID: 114613989396417430}
+  - component: {fileID: 114652021686772590}
   m_Layer: 2
   m_Name: tower3
   m_TagString: Untagged
@@ -166,6 +167,27 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114652021686772590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033599867910844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb5cde8586940b43b06da5fb1ad5c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  mana: 0
+  fireRate: 1
+  range: 5
+  projectile: {fileID: 1483747131460668, guid: d995bf50ce45d504ab7143f691ce021b, type: 2}
+  canHit:
+    serializedVersion: 2
+    m_Bits: 512
+  targetQueue: []
+  firePoint: {fileID: 4740539377542614}
 --- !u!135 &135945032265734588
 SphereCollider:
   m_ObjectHideFlags: 1
