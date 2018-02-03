@@ -12,18 +12,20 @@ public class Enemy : NetworkBehaviour {
 	[SyncVar] public int damage;
 	[SyncVar] public float speed;
 	[SyncVar] public float minimumSpeed;
+
 	public LayerMask type;
 	protected NavMeshAgent enemy;
 
 
-	public GameObject spawner;
-	private int waypointIndex = 1;
 
+	private int waypointIndex = 1;
+	private Transform wayPoints;
 
 
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log ("waypoint size =" + WayPointManager.GetSize ());
 		gameObject.tag = "Enemy";
 		Type ();
 		enemy = GetComponent<NavMeshAgent> ();
@@ -35,7 +37,7 @@ public class Enemy : NetworkBehaviour {
 	void Update () {
 		Vector3 dir = GetComponent<NavMeshAgent> ().destination - transform.position;
 		transform.Translate (dir.normalized * speed*Time.deltaTime,Space.World);
-		Vector3.Distance (spawner.GetComponent<Spawn>().destination[waypointIndex].transform.position, transform.position);
+		Vector3.Distance ( WayPointManager.GetWayPoints(waypointIndex), transform.position);
 		enemy.speed = speed;
 
 
@@ -52,14 +54,15 @@ public class Enemy : NetworkBehaviour {
 		enemy.acceleration = 60;
 	}
 	void FirstPoint(){
-		enemy.destination = spawner.GetComponent<Spawn>().destination [waypointIndex].transform.position;
+		enemy.destination = WayPointManager.GetWayPoints(waypointIndex);
 	}
 	void GetNextWayPoint(){
-		if (waypointIndex >= spawner.GetComponent<Spawn>().destination.Count - 1) {
-			Destroy (gameObject);
+		if (waypointIndex >= WayPointManager.GetSize()-1) {
+			Destroy (this.gameObject);
 		} else {
 			waypointIndex++;
-			GetComponent<NavMeshAgent> ().destination = spawner.GetComponent<Spawn>().destination [waypointIndex].transform.position;
+			Debug.Log ("index =" + waypointIndex);
+			GetComponent<NavMeshAgent> ().destination =  WayPointManager.GetWayPoints(waypointIndex);
 		}
 
 	}	

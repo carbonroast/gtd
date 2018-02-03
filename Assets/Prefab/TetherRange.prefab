@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33712614980145872}
   - component: {fileID: 65451265751287512}
   - component: {fileID: 23909356630878018}
+  - component: {fileID: 114067998725563252}
   m_Layer: 0
   m_Name: TetherRange
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1576029510414984}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -93,3 +94,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114067998725563252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576029510414984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 140
+    i1: 27
+    i2: 99
+    i3: 63
+    i4: 147
+    i5: 81
+    i6: 143
+    i7: 180
+    i8: 155
+    i9: 51
+    i10: 171
+    i11: 28
+    i12: 36
+    i13: 96
+    i14: 216
+    i15: 187
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

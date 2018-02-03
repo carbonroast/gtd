@@ -76,6 +76,8 @@
      <Compile Include="Assets\Scripts\TowerController.cs" />
      <Compile Include="Assets\Scripts\TowerList.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower3.cs" />
+     <Compile Include="Assets\Scripts\Unit.cs" />
+     <Compile Include="Assets\Scripts\WayPointManager.cs" />
      <Compile Include="Assets\Scripts\WayPoints.cs" />
      <None Include="Assets\RTS_Camera\Demo\Projectors\Guidelines.txt" />
      <None Include="Assets\RTS_Camera\Demo\Projectors\Shaders\ProjectorLight.shader" />

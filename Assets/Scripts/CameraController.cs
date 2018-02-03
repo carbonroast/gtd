@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : NetworkBehaviour {
 
 
 	public float panSpeed = 20f;
@@ -16,13 +16,23 @@ public class CameraController : MonoBehaviour {
 	private Quaternion rotation;
 	private Vector3 position;
 
-	void Awake(){
+	void Start(){
+		if (!isLocalPlayer) {
+			return;
+		}
 		rotation = transform.rotation;
-		position = new Vector3 (5, 12, -7);
+		position = new Vector3 (5, 0, 0);
 
 	}
 
 	void LateUpdate(){
+		if (!isLocalPlayer) {
+			return;
+		}
+		CmdCameraMovement();
+	}
+	//[Command]
+	void CmdCameraMovement(){
 		transform.rotation = rotation;
 		transform.position = position;
 
@@ -49,9 +59,6 @@ public class CameraController : MonoBehaviour {
 		newposition.y = Mathf.Clamp (newposition.y, minY, maxY);
 		newposition.z = Mathf.Clamp (newposition.z, -panLimit.y, panLimit.y);
 		*/
-
-
-
 	}
 
 }

@@ -20,7 +20,14 @@ public class TowerController : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if (!isLocalPlayer) {
+			return;
+		}
+		var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+		var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+
+		transform.Rotate(0, x, 0);
+		transform.Translate(0, 0, z);
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			GetMousePosition ();
 		}
@@ -33,7 +40,7 @@ public class TowerController : NetworkBehaviour {
 	[Client]
 	void GetMousePosition(){
 		Ray ray = GetComponentInChildren<Camera>().ScreenPointToRay (Input.mousePosition);
-		Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+		Debug.DrawRay(ray.origin, ray.direction * 30,Color.red, 30);
 		RaycastHit hit;
 		Debug.Log (transform.name + " clicked " + Input.mousePosition);
 		if (Physics.Raycast (ray, out hit, 100f, BuildBlock.value)) {
