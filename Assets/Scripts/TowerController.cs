@@ -28,36 +28,36 @@ public class TowerController : NetworkBehaviour {
 
 		transform.Rotate(0, x, 0);
 		transform.Translate(0, 0, z);
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown ("space")) {
 			GetMousePosition ();
 		}
 
 	}
 
 	//client only getting click
-	//[Client]
-
 	[Client]
 	void GetMousePosition(){
 		Ray ray = GetComponentInChildren<Camera>().ScreenPointToRay (Input.mousePosition);
 		Debug.DrawRay(ray.origin, ray.direction * 30,Color.red, 30);
 		RaycastHit hit;
-		Debug.Log (transform.name + " clicked " + Input.mousePosition);
+		//Debug.Log ("TowerController : " + transform.name + " clicked " + Input.mousePosition);
 		if (Physics.Raycast (ray, out hit, 100f, BuildBlock.value)) {
-			CmdClick (hit.collider.name);
+			Debug.Log ("TowerController : " + "Has hit " + hit.collider.name);
+			CmdSpawnTower (hit.collider.name);
 		}
 	}
 	[Command]
-	void CmdClick(string tile){
+	void CmdSpawnTower(string tile){
+		Debug.Log ("TowerController : " + "Trying To spawn");
 		bool canBuild = TilesManager.GetTiles (tile).GetComponent<Tile>().canBuild;
 		if (canBuild) {
-			GameObject g = (GameObject)Instantiate (towerone);
-			g.transform.position = TilesManager.GetTiles (tile).transform.position + towerone.transform.position;
+			GameObject go = (GameObject)Instantiate (towerone);
+			go.transform.position = TilesManager.GetTiles (tile).transform.position + towerone.transform.position;
 			TilesManager.GetTiles (tile).GetComponent<Tile> ().canBuild = false;
-			NetworkServer.Spawn (g);
-			Debug.Log (" Has Built");
+			NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
+			Debug.Log ("TowerController : " + "Has Built");
 		} else {
-			Debug.Log ("Cant Build There");
+			Debug.Log ("TowerController : " + "Cant Build There");
 		}
 	}
 		

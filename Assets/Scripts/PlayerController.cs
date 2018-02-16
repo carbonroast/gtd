@@ -28,20 +28,11 @@ public class PlayerController : NetworkBehaviour {
 		if (Input.GetKeyDown ("d")) {
 			CmdSpawnBuilder ();
 		}
-		if (Input.GetKeyDown ("space")) {
-			CmdSpawnTower ();
-		}
+
 	
 
 	}
-	[Command]
-	void CmdSpawnTower(){
-		GameObject go = Instantiate (tower);
 
-
-
-		NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
-	}
 	//Spawns the builder gameobject with authority
 	[Command]
 	void CmdSpawnBuilder(){

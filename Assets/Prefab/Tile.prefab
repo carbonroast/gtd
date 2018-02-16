@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114136267227497792}
   - component: {fileID: 114865569393692082}
   - component: {fileID: 114643918947440752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBuild: 0
+  name: 
 --- !u!114 &114865569393692082
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,30 +10,35 @@ public class CreateWorld : NetworkBehaviour {
 	public int xSize;
 	public int ySize;
 
-	void Start () {
+	 void Start () {
+		if(!isServer){
+			return;
+		}
 		//RpcSpawnSelectionSquare ();
 		CmdSpawnWorld();
 	}
 
-	[Command]
+
 	void CmdSpawnWorld(){
-		GameObject _tiles = new GameObject();
-		_tiles.transform.parent = this.transform;
-		_tiles.name = "Tiles";
 		for (int i = 0; i < xSize; i++) {
 			for (int j = 0; j < ySize; j++) {
 				GameObject childObject = (GameObject)Instantiate (tile);
-				childObject.transform.parent = _tiles.transform;
+				childObject.GetComponent<Tile> ().parentNetId = this.netId;
+				//childObject.GetComponent<Tile>().name = i + " " + j;
+				childObject.transform.parent = this.transform;
 				childObject.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
-				childObject.name = i + " " + j;
-				childObject.layer = LayerMask.NameToLayer ("Tile");
-				TilesManager.RegisterTiles (childObject.name, childObject);
+				childObject.name = childObject.GetComponent<Tile>().name;
+				//Debug.Log ("CreateWorld: Creating " + childObject.name);
+
+
 				NetworkServer.Spawn (childObject);
+
 			}
 		}
-		print ("World Created");
+	
+		print ("CmdSpawnWorld : World Created");
 	}
-//
+
 //		void RpcSpawnSelectionSquare(){
 //			GameObject _selectionSquares = new GameObject();
 //			_selectionSquares.transform.parent = this.transform;

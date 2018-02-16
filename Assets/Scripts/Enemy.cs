@@ -11,7 +11,7 @@ public class Enemy : NetworkBehaviour {
 	[SyncVar] public int mana;
 	[SyncVar] public int damage;
 	[SyncVar] public float speed;
-	[SyncVar] public float minimumSpeed;
+	[SyncVar] public float lowestMinimumSpeed;
 
 	public LayerMask type;
 	protected NavMeshAgent enemy;
@@ -38,11 +38,11 @@ public class Enemy : NetworkBehaviour {
 		Vector3 dir = GetComponent<NavMeshAgent> ().destination - transform.position;
 		transform.Translate (dir.normalized * speed*Time.deltaTime,Space.World);
 		Vector3.Distance ( WayPointManager.GetWayPoints(waypointIndex), transform.position);
-		enemy.speed = speed;
+		enemy.speed = speed; //distance/time
 
 
 		if(Vector3.Distance (this.transform.position, enemy.destination) <= 1.0f){
-			GetNextWayPoint();
+			GetNextWayPoint(); //Get next Ayyyy point
 
 		}
 	}
@@ -68,7 +68,7 @@ public class Enemy : NetworkBehaviour {
 	}	
 
 	public void ChangeHP(int amount){
-		if (!isServer) {
+		if (!isServer) { //Nathan
 			return;
 		}
 		hp = hp - amount;

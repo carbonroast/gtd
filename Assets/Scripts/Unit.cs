@@ -47,8 +47,10 @@ public class Unit : NetworkBehaviour {
 
 			if (Physics.Raycast (ray, out hit, 100f, canMove.value)) {
 				Debug.Log ("position is " + hit.point);
+				Debug.Log (hit.collider.name);
 				Vector3 position = hit.point;
 				unit.destination = position;
+
 
 			}
 			Debug.DrawLine (cam.transform.position, hit.point, Color.red,20);

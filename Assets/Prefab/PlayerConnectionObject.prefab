@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114890103011301668}
   - component: {fileID: 114998940581507050}
   - component: {fileID: 114829733656163350}
+  - component: {fileID: 114922370712213848}
   m_Layer: 0
   m_Name: PlayerConnectionObject
   m_TagString: Untagged
@@ -230,6 +231,22 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.5
   m_InterpolateMovement: 0.5
+--- !u!114 &114922370712213848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771385850148520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e3720362a765342938855781f6b486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerone: {fileID: 1033599867910844, guid: f5f5d7e9d1190c9439b4006cda9f8080, type: 2}
+  towertwo: {fileID: 0}
+  BuildBlock:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &114969927452409656
 MonoBehaviour:
   m_ObjectHideFlags: 1
