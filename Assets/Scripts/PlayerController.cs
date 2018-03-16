@@ -41,9 +41,14 @@ public class PlayerController : NetworkBehaviour {
 
 
 		NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
+		string _ID = go.GetComponent<NetworkIdentity>().netId.ToString();
+		go.transform.name = "Builder " + _ID;
+
 	}
 
 
 
+
 }
+
 

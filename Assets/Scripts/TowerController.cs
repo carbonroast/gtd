@@ -48,8 +48,10 @@ public class TowerController : NetworkBehaviour {
 	}
 	[Command]
 	void CmdSpawnTower(string tile){
-		Debug.Log ("TowerController : " + "Trying To spawn");
-		bool canBuild = TilesManager.GetTiles (tile).GetComponent<Tile>().canBuild;
+		Debug.Log ("TowerController : Trying To spawn on " + tile);
+		GameObject _go = TilesManager.GetTiles (tile);
+
+		bool canBuild =_go.GetComponent<Tile>().canBuild;
 		if (canBuild) {
 			GameObject go = (GameObject)Instantiate (towerone);
 			go.transform.position = TilesManager.GetTiles (tile).transform.position + towerone.transform.position;

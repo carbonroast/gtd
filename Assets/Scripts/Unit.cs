@@ -19,10 +19,13 @@ public class Unit : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		unit = GetComponent<NavMeshAgent> ();
 		//Get Camera from PlayerSetup used for movement
 		cam = PlayerSetup.playerCam;
 		Debug.Log ("spawned");
+
+
 	}
 	
 	// Update is called once per frame
@@ -31,8 +34,27 @@ public class Unit : NetworkBehaviour {
 			return;
 		}
 
+		if (Input.GetKeyDown ("f")) {
+			string n = "Builder " + Random.Range (1, 100);
+			CmdChangeName (n);
+		}
+
 		clickToMove ();
 	}
+
+	[Command]
+	void CmdChangeName(string n){
+		Debug.Log("CmdChangeName: " + n);
+			transform.name = n;
+		RpcChangeName (transform.name);
+	}
+
+	[ClientRpc]
+	void RpcChangeName(string n){
+		Debug.Log ("RpcChangeName: " + n);
+		transform.name = n;
+	}
+
 	//Shoots a ray which hits a buildblock and asks if it can move there
 	void clickToMove(){
 		if(Input.GetKeyDown("p")){

@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 1537420067}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -787,8 +787,8 @@ MonoBehaviour:
     type: 2}
   tetherRange: {fileID: 1576029510414984, guid: 8c1b633f93518fb49b33ab1c2460d8bb,
     type: 2}
-  xSize: 10
-  ySize: 10
+  xSize: 4
+  ySize: 4
 --- !u!114 &1537420067
 MonoBehaviour:
   m_ObjectHideFlags: 0

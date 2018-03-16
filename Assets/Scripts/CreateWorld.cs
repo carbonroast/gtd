@@ -10,34 +10,50 @@ public class CreateWorld : NetworkBehaviour {
 	public int xSize;
 	public int ySize;
 
+
 	 void Start () {
-		if(!isServer){
-			return;
-		}
+
 		//RpcSpawnSelectionSquare ();
 		CmdSpawnWorld();
 	}
 
 
-	void CmdSpawnWorld(){
+	//[Command]
+	public void CmdSpawnWorld(){
 		for (int i = 0; i < xSize; i++) {
 			for (int j = 0; j < ySize; j++) {
 				GameObject childObject = (GameObject)Instantiate (tile);
-				childObject.GetComponent<Tile> ().parentNetId = this.netId;
+				//childObject.GetComponent<Tile> ().parentNetId = this.netId;
 				//childObject.GetComponent<Tile>().name = i + " " + j;
-				childObject.transform.parent = this.transform;
+				//childObject.transform.parent = this.transform;
 				childObject.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
-				childObject.name = childObject.GetComponent<Tile>().name;
+				//childObject.name = childObject.GetComponent<Tile>().name;
 				//Debug.Log ("CreateWorld: Creating " + childObject.name);
 
 
 				NetworkServer.Spawn (childObject);
-
+				string _ID = childObject.GetComponent<NetworkIdentity> ().netId.ToString();
+				Debug.Log (_ID);
+				TilesManager.RegisterTiles (_ID, childObject.gameObject);
+				//RpcNameTiles (childObject,_ID);
 			}
 		}
 	
 		print ("CmdSpawnWorld : World Created");
 	}
+//
+//	[ClientRpc]
+//	void RpcNameTiles(GameObject childObject ,string TileNetID){
+//		
+//		childObject.transform.name = "Cube " + TileNetID;
+//		print ("RpcNameTiles : " + childObject.transform.name + " Created");
+//	}
+//
+
+
+
+
+
 
 //		void RpcSpawnSelectionSquare(){
 //			GameObject _selectionSquares = new GameObject();

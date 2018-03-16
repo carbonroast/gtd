@@ -121,6 +121,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 0b2fa8c79d4afca4d03d75a77ec2da5e Assembly-CSharp.dll:.TetherRange
 10df46396e061e3e8faff5ec4815169a Assembly-CSharp.dll:.Projectile
 d78da10fc6fe2ebb0bfa7bfae15012c5 Assembly-CSharp.dll:UnityEngine.AI.NavMeshModifierVolume
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.WayPoints
 ed5b1294bf25c955351a414cffe1c3ab Assembly-CSharp.dll:RTS_Cam.RTS_Camera
 fbce19c26494a4d299a31bd54b44768b Assembly-CSharp.dll:.CSVParser
