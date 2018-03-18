@@ -37,26 +37,26 @@ public class SelectionSquare : MonoBehaviour {
 
 	void OnMouseOver(){
 
-		if(PlayerController.newMouseOver){
+		if(PlayerControls.newMouseOver){
 			//Debug.Log ("mouseOver");
 			SelectBuildLocation();
 		}
 	}
 
 	void OnMouseExit(){
-		if (PlayerController.newMouseOver == false) {
+		if (PlayerControls.newMouseOver == false) {
 			for (int i = 0; i < _grid.Count; ++i) {
 				TilesManager.GetTiles (_grid [i]).GetComponent<Renderer> ().material.SetColor ("_Color", Color.white);
 			}
 
-			PlayerController.newMouseOver = true;
+			PlayerControls.newMouseOver = true;
 			//_grid = this.transform.parent.GetComponent<SelectionSquare>()._grid ;
 			//Debug.Log (PlayerController.newMouseOver);
 		}
 	}
 
 	void SelectBuildLocation(){
-		PlayerController.newMouseOver = false;
+		PlayerControls.newMouseOver = false;
 		for(int i=0; i < _grid.Count; ++i){
 			TilesManager.GetTiles (_grid[i]).GetComponent<Renderer> ().material.SetColor ("_Color",Color.blue);
 		}

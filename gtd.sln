@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gtd", "gtd.csproj", "{15D248E5-61EB-07AE-938A-82CA1AAF6F4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gtd.Editor", "gtd.Editor.csproj", "{6EBD0659-F9C0-EADD-D276-90CC91254402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15D248E5-61EB-07AE-938A-82CA1AAF6F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D248E5-61EB-07AE-938A-82CA1AAF6F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D248E5-61EB-07AE-938A-82CA1AAF6F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D248E5-61EB-07AE-938A-82CA1AAF6F4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBD0659-F9C0-EADD-D276-90CC91254402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBD0659-F9C0-EADD-D276-90CC91254402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBD0659-F9C0-EADD-D276-90CC91254402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBD0659-F9C0-EADD-D276-90CC91254402}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

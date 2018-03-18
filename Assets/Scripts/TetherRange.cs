@@ -22,15 +22,15 @@ public class TetherRange : MonoBehaviour {
 
 	void DeselectBuildLocation(){
 		Debug.Log ("MouseEXIT");
-		if (PlayerController.newMouseOver == false) {
+		if (PlayerControls.newMouseOver == false) {
 			
 			for (int i = 0; i < selectionSquare.GetComponent<SelectionSquare> ()._grid.Count; ++i) {
 				TilesManager.GetTiles (selectionSquare.GetComponent<SelectionSquare> ()._grid [i]).GetComponent<Renderer> ().material.SetColor ("_Color", Color.white);
 			}
 
-			PlayerController.newMouseOver = true;
+			PlayerControls.newMouseOver = true;
 			//_grid = this.transform.parent.GetComponent<SelectionSquare>()._grid ;
-			Debug.Log (PlayerController.newMouseOver);
+			Debug.Log (PlayerControls.newMouseOver);
 		}
 	}
 }
