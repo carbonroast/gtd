@@ -8,6 +8,7 @@ public class Tile : NetworkBehaviour {
 	[SyncVar] public bool canBuild;
 	[SyncVar] public NetworkInstanceId parentNetId;
 	[SyncVar] public string name;
+	private WaitForSeconds m_StartWait;
 	bool runOnce = true;
 
 
@@ -16,31 +17,17 @@ public class Tile : NetworkBehaviour {
 		if (!isServer) {
 			return;
 		}
-		//GameObject parentObject = ClientScene.FindLocalObject (parentNetId);.
-		//transform.SetParent (parentObject.transform);
-		//TilesManager.RegisterTiles (_ID, this.gameObject);
+
 
 		canBuild = true;
 
 		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
 		transform.name = "Cube " + _ID;
-		name = transform.name;
-
-		//CmdRename does not run correctly in start
-		//CmdRename (transform.name);
+		m_StartWait = new WaitForSeconds(3.0f);
+		StartCoroutine (Setup(transform.name));
 
 	}
-//	void Update(){
-//		if (!isServer) {
-//			return;
-//		}
-//		if (runOnce) {
-//			
-//			CmdRename (transform.name);
-//			runOnce = false;
-//		}
-//	}
-//
+
 	public void CanBuild(bool _canBuild){
 		
 		canBuild = _canBuild;
@@ -58,6 +45,15 @@ public class Tile : NetworkBehaviour {
 	void RpcRename(string name){
 		transform.name = name;
 		Debug.Log ("RpcRename : Name is now " + name);
+
+	}
+	private IEnumerator Setup( string name)
+	{
+		
+		//wait to be sure that all are ready to start
+		yield return m_StartWait;
+		CmdRename (name);
+		// Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
 
 	}
 

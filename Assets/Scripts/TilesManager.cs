@@ -10,7 +10,7 @@ public class TilesManager : MonoBehaviour {
 
 	public static void RegisterTiles (string _netID, GameObject _BuildPlaceLocationGO){
 		string _cubeID = cubeIdPrefix + _netID;
-		_tiles.Add (_netID, _BuildPlaceLocationGO);
+		_tiles.Add (_cubeID, _BuildPlaceLocationGO);
 		_BuildPlaceLocationGO.transform.name = _cubeID;
 	}
 

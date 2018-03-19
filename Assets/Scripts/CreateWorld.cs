@@ -9,16 +9,20 @@ public class CreateWorld : NetworkBehaviour {
 	public GameObject tetherRange;
 	public int xSize;
 	public int ySize;
-
+	private WaitForSeconds m_StartWait;
 
 	 void Start () {
-
+		if (!isServer) {
+			return;
+		}
 		//RpcSpawnSelectionSquare ();
+		//m_StartWait = new WaitForSeconds(3.0f);
+		//StartCoroutine (BuildMap());
 		CmdSpawnWorld();
 	}
 
 
-	//[Command]
+	[Command]
 	public void CmdSpawnWorld(){
 		for (int i = 0; i < xSize; i++) {
 			for (int j = 0; j < ySize; j++) {
@@ -40,6 +44,15 @@ public class CreateWorld : NetworkBehaviour {
 		}
 	
 		print ("CmdSpawnWorld : World Created");
+	}
+	private IEnumerator BuildMap()
+	{
+		CmdSpawnWorld ();
+		//wait to be sure that all are ready to start
+		yield return m_StartWait;
+
+		// Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
+
 	}
 //
 //	[ClientRpc]
