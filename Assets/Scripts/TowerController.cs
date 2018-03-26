@@ -15,11 +15,6 @@ public class TowerController : NetworkBehaviour {
 	//private RaycastHit hit;
 	// Use this for initialization
 	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
 		if (!isLocalPlayer) {
 			return;
 		}
@@ -28,6 +23,14 @@ public class TowerController : NetworkBehaviour {
 
 		transform.Rotate(0, x, 0);
 		transform.Translate(0, 0, z);
+	}
+
+	// Update is called once per frame
+	void Update () {
+		if (!isLocalPlayer) {
+			return;
+		}
+
 		if (Input.GetKeyDown ("space")) {
 			GetMousePosition ();
 		}
@@ -48,21 +51,25 @@ public class TowerController : NetworkBehaviour {
 	}
 	[Command]
 	void CmdSpawnTower(string tile){
-		Debug.Log ("TowerController : Trying To spawn on " + tile);
 		GameObject _go = TilesManager.GetTiles (tile);
 
 		bool canBuild =_go.GetComponent<Tile>().canBuild;
 		if (canBuild) {
 			GameObject go = (GameObject)Instantiate (towerone);
 			go.transform.position = TilesManager.GetTiles (tile).transform.position + towerone.transform.position;
+
+
 			TilesManager.GetTiles (tile).GetComponent<Tile> ().canBuild = false;
 			NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
-			Debug.Log ("TowerController : " + "Has Built");
+
+
+			//Debug.Log ("TowerController : " + "Has Built");
+
 		} else {
-			Debug.Log ("TowerController : " + "Cant Build There");
+			Debug.Log ("Command : " + "Cant Build There");
 		}
+
 	}
 		
-
 }
 

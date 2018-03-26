@@ -3,3 +3,11 @@
 *.config
 *.info
 *.config
+Builds/Build1_Data/globalgamemanagers
+Builds/Build1_Data/globalgamemanagers
+*.info
+*.dll
+*.mdb
+Temp/StagingArea/Build1_Data/PlayerConnectionConfigFile
+*.xml
+Temp/UnityTempFile-107a83c26c9564446a23a45aa54df6e7

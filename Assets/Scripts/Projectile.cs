@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : NetworkBehaviour {
 
 
 
@@ -21,7 +22,7 @@ public class Projectile : MonoBehaviour {
 
 
 
-	void Awake(){
+	void Start(){
 		gameObject.GetComponent<BoxCollider>().isTrigger = isTrigger;
 
 	}
@@ -49,7 +50,7 @@ public class Projectile : MonoBehaviour {
 		Debug.Log ("hit");
 		//Destroy(gameObject);
 		Enemy e = target.GetComponent<Enemy>();
-		e.ChangeHP(damage);
+		e.CmdChangeHP(damage);
 		Destroy (gameObject);
 	}
 

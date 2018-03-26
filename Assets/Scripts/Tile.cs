@@ -20,9 +20,9 @@ public class Tile : NetworkBehaviour {
 
 
 		canBuild = true;
-
+		transform.name = "Cube ";
 		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
-		transform.name = "Cube " + _ID;
+		TilesManager.RegisterTiles (_ID, this.gameObject);
 		m_StartWait = new WaitForSeconds(3.0f);
 		StartCoroutine (Setup(transform.name));
 
@@ -31,20 +31,20 @@ public class Tile : NetworkBehaviour {
 	public void CanBuild(bool _canBuild){
 		
 		canBuild = _canBuild;
-		Debug.LogError ("canbuild= " + canBuild);
+
 	}
 
 	[Command]
 	public void CmdRename(string name){
 		transform.name = name;
-		Debug.Log ("CmdRename : Name is now " + name);
+
 		RpcRename (name);
 	}
 
 	[ClientRpc]
 	void RpcRename(string name){
 		transform.name = name;
-		Debug.Log ("RpcRename : Name is now " + name);
+
 
 	}
 	private IEnumerator Setup( string name)

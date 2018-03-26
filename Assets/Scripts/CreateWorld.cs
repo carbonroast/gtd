@@ -15,9 +15,6 @@ public class CreateWorld : NetworkBehaviour {
 		if (!isServer) {
 			return;
 		}
-		//RpcSpawnSelectionSquare ();
-		//m_StartWait = new WaitForSeconds(3.0f);
-		//StartCoroutine (BuildMap());
 		CmdSpawnWorld();
 	}
 
@@ -27,42 +24,16 @@ public class CreateWorld : NetworkBehaviour {
 		for (int i = 0; i < xSize; i++) {
 			for (int j = 0; j < ySize; j++) {
 				GameObject childObject = (GameObject)Instantiate (tile);
-				//childObject.GetComponent<Tile> ().parentNetId = this.netId;
-				//childObject.GetComponent<Tile>().name = i + " " + j;
-				//childObject.transform.parent = this.transform;
 				childObject.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
-				//childObject.name = childObject.GetComponent<Tile>().name;
-				//Debug.Log ("CreateWorld: Creating " + childObject.name);
-
-
+			
 				NetworkServer.Spawn (childObject);
-				string _ID = childObject.GetComponent<NetworkIdentity> ().netId.ToString();
-				Debug.Log (_ID);
-				TilesManager.RegisterTiles (_ID, childObject.gameObject);
-				//RpcNameTiles (childObject,_ID);
+
+
 			}
 		}
 	
 		print ("CmdSpawnWorld : World Created");
 	}
-	private IEnumerator BuildMap()
-	{
-		CmdSpawnWorld ();
-		//wait to be sure that all are ready to start
-		yield return m_StartWait;
-
-		// Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
-
-	}
-//
-//	[ClientRpc]
-//	void RpcNameTiles(GameObject childObject ,string TileNetID){
-//		
-//		childObject.transform.name = "Cube " + TileNetID;
-//		print ("RpcNameTiles : " + childObject.transform.name + " Created");
-//	}
-//
-
 
 
 

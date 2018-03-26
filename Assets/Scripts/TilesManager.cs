@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TilesManager : MonoBehaviour {
 	
-	private const string cubeIdPrefix = "Cube ";
+	//private const string cubeIdPrefix = "Cube ";
 	private static Dictionary <string, GameObject> _tiles = new Dictionary<string, GameObject>();
 
 
 	public static void RegisterTiles (string _netID, GameObject _BuildPlaceLocationGO){
-		string _cubeID = cubeIdPrefix + _netID;
+		string _cubeID = _BuildPlaceLocationGO.transform.name + _netID;
 		_tiles.Add (_cubeID, _BuildPlaceLocationGO);
 		_BuildPlaceLocationGO.transform.name = _cubeID;
 	}
@@ -19,6 +19,7 @@ public class TilesManager : MonoBehaviour {
 		return _tiles [_cubeID];
 	}
 
+	/*
 	void OnGUI(){
 		GUILayout.BeginArea (new Rect (200, 200, 200, 500));
 
@@ -30,5 +31,5 @@ public class TilesManager : MonoBehaviour {
 
 		GUILayout.EndVertical ();
 		GUILayout.EndArea();
-	}
+	}*/
 }

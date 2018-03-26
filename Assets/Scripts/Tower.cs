@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Networking;
 
 [System.Serializable]
 
-public class Tower : MonoBehaviour {
+public class Tower : NetworkBehaviour {
 
 	[Header ("Values")]
 	public int damage;
@@ -24,28 +24,41 @@ public class Tower : MonoBehaviour {
 	private float fireCountDown = 0f;
 
 	void Start () {
+		if (!isClient) {
+			return;
+		}
 		//canHit = LayerMask.NameToLayer ("Air");
+		Setup();
 		gameObject.GetComponent<SphereCollider> ().radius = range;
 		gameObject.GetComponent<SphereCollider> ().isTrigger = true;
-
+		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
+		TowerManager.RegisterTower (_ID, this.gameObject);
 	}
 
 
 	void Update () {
-
+		if (!isClient) {
+			return;
+		}
 	}
 
 
+	public virtual void Setup(){
+		transform.name = "Tower ";
 
+	}
 
 	void OnTriggerStay(Collider other){
+		if (!isClient) {
+			return;
+		}
 		if(other.gameObject.tag == "Enemy"){
 			//if frame rate bad, change to call 10 times a frame
 
 			targetQueue = Physics.OverlapSphere(transform.position,range, canHit.value);
 
 			if (fireCountDown <= 0f) {
-				Attack ();
+				CmdAttack ();
 				fireCountDown = 1f / fireRate;
 			}
 			fireCountDown -= Time.deltaTime;
@@ -53,13 +66,15 @@ public class Tower : MonoBehaviour {
 	}
 
 
-
-	public virtual void Attack(){
+	[Command]
+	public virtual void CmdAttack(){
 		if(targetQueue.Length != 0){
 			GameObject g = (GameObject)Instantiate(projectile, firePoint.position, Quaternion.identity);
 			//GameObject g = (GameObject)Instantiate(GetComponent<Projectile>().projectilePrefab, firePoint.position, firePoint.rotation);
 			g.GetComponent<Projectile>().target = targetQueue[0].transform;
 			g.GetComponent<Projectile>().damage = damage;
+			NetworkServer.Spawn (g);
+
 		}
 	}
 

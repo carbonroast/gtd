@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 135945032265734588}
   - component: {fileID: 208100719967099044}
   - component: {fileID: 114000924291085554}
-  - component: {fileID: 114613989396417430}
   - component: {fileID: 114652021686772590}
+  - component: {fileID: 114394525651079174}
   m_Layer: 2
   m_Name: tower3
   m_TagString: Untagged
@@ -146,7 +146,7 @@ MonoBehaviour:
     i15: 128
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114613989396417430
+--- !u!114 &114394525651079174
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,11 +154,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033599867910844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.1
+  m_SendInterval: 0
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0

@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\CSVParser.cs" />
      <Compile Include="Assets\Scripts\Enemies\RedCapsule.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\PlayerSetup.cs" />
@@ -87,7 +88,7 @@
      <Compile Include="Assets\Scripts\TilesManager.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />
      <Compile Include="Assets\Scripts\TowerController.cs" />
-     <Compile Include="Assets\Scripts\TowerList.cs" />
+     <Compile Include="Assets\Scripts\TowerManager.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower3.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\WayPointManager.cs" />

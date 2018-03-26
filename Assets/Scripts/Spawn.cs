@@ -10,16 +10,19 @@ public class Spawn : NetworkBehaviour {
 	private int waveNumber;
 	private float temp;
 	// Use this for initialization
-	public override void OnStartServer(){
 
-	}
 
-	void Awake(){
-		Path ();
+	void Start(){
+		if (!isServer) {
+			return;
+		}
 		temp = interval;
 	}
 	// Update is called once per frame
 	void Update () {
+		if (!isServer) {
+			return;
+		}
 		if (interval <= 0) {
 			CmdSpawnNext ();
 			interval = temp;
@@ -30,16 +33,11 @@ public class Spawn : NetworkBehaviour {
 
 	[Command]
 	void CmdSpawnNext(){
-		GameObject enemy = (GameObject)Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		GameObject enemy = (GameObject)Instantiate (enemyPrefab);
+		enemy.transform.position = WayPointManager.GetWayPoints (0);
 		NetworkServer.Spawn (enemy);
-	}
-
-	void Path(){
-
-		for (int i = 0; i < transform.childCount; i++) {
-			WayPointManager.RegisterWayPoints (transform.GetChild (i).transform.position);
-		}
-
 
 	}
+
+
 }

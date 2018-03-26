@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23375219783601946}
   - component: {fileID: 114136267227497792}
   - component: {fileID: 114865569393692082}
-  - component: {fileID: 114643918947440752}
+  - component: {fileID: 114124085223101644}
   - component: {fileID: 114677740524200156}
   m_Layer: 8
   m_Name: Tile
@@ -97,6 +97,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114124085223101644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505600909061656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4100869ab52bf304fbc31b2a7c9d878a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBuild: 0
+  name: 
 --- !u!114 &114136267227497792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,19 +138,6 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &114643918947440752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1505600909061656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4100869ab52bf304fbc31b2a7c9d878a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canBuild: 0
-  name: 
 --- !u!114 &114677740524200156
 MonoBehaviour:
   m_ObjectHideFlags: 1
