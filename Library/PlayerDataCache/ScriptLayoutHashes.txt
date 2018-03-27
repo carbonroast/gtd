@@ -168,6 +168,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 8f6a22c40634a683321f89266c3b9d22 Assembly-CSharp.dll:.PlayerControls
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Prototype.NetworkLobby.DraggablePanel
 5cdd03a51679fbd8b2fa731b48ea1b50 Assembly-CSharp.dll:.Enemy
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ProjectileManager
 cadce1927d585ab452b63cdc6c4e52ab Assembly-CSharp.dll:.PlayerSetup
 239d2cc8d353bbfcbefc27fa8f0221cc Assembly-CSharp.dll:Prototype.NetworkLobby.LobbyServerList
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ProjectileManager

@@ -30,6 +30,8 @@ public class Unit : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+
 		if (hasAuthority==false) {
 			return;
 		}
@@ -42,24 +44,8 @@ public class Unit : NetworkBehaviour {
 		clickToMove ();
 	}
 
-	[Command]
-	void CmdChangeName(string n){
-		Debug.Log("CmdChangeName: " + n);
-			transform.name = n;
-		RpcChangeName (transform.name);
-	}
-
-	[ClientRpc]
-	void RpcChangeName(string n){
-		Debug.Log ("RpcChangeName: " + n);
-		transform.name = n;
-	}
-
 	//Shoots a ray which hits a buildblock and asks if it can move there
 	void clickToMove(){
-		if(Input.GetKeyDown("p")){
-			Debug.Log("playerObjectCam : " + cam.transform.position);
-		}
 		if (Input.GetMouseButtonDown (1)) {
 			//Debug.Log ("down");
 			Debug.Log (transform.name + "has clicked " + Input.mousePosition);
@@ -79,6 +65,21 @@ public class Unit : NetworkBehaviour {
 		}
 
 	}
+
+	[Command]
+	void CmdChangeName(string n){
+		Debug.Log("CmdChangeName: " + n);
+			transform.name = n;
+		RpcChangeName (transform.name);
+	}
+
+	[ClientRpc]
+	void RpcChangeName(string n){
+		Debug.Log ("RpcChangeName: " + n);
+		transform.name = n;
+	}
+
+
 
 
 }

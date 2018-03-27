@@ -21,7 +21,7 @@ public class Enemy : NetworkBehaviour {
 	private int waypointIndex = 1;
 	private Transform wayPoints;
 	private string _ID;
-
+	private Vector3 bestGuessPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -45,39 +45,47 @@ public class Enemy : NetworkBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+		
+		bestGuessPosition = bestGuessPosition + (GetComponent<NavMeshAgent> ().velocity * Time.deltaTime);
+		//transform.position = Vector3.Lerp (transform.position, bestGuessPosition, Time.deltaTime);
+
+
 		if (!isServer) {
+			
 			return;
 		}
+
 		Vector3 dir = GetComponent<NavMeshAgent> ().destination - transform.position;
 		transform.Translate (dir.normalized * speed*Time.deltaTime,Space.World);
-		Vector3.Distance ( WayPointManager.GetWayPoints(waypointIndex), transform.position);
-		enemy.speed = speed; //distance/time
+		float distanceLeft = Vector3.Distance (this.transform.position, enemy.destination);
+		enemy.speed = speed; 
+		//Debug.Log (enemy.speed);
 
-
-		if(Vector3.Distance (this.transform.position, enemy.destination) <= 1.0f){
+		if(distanceLeft <= 1.2f){
 			GetNextWayPoint(); //Get next Ayyyy point
-
 		}
+
 	}
 	void setup(){
 		transform.name = "enemy ";
 	}
+
 	public virtual void Type(){
 
 		gameObject.layer = LayerMask.NameToLayer ("Air");
 	}
 	public virtual void Movement(){
-		enemy.acceleration = 60;
+		enemy.acceleration = 100;
 	}
 	void FirstPoint(){
 		enemy.destination = WayPointManager.GetWayPoints(waypointIndex);
 	}
 	void GetNextWayPoint(){
 		if (waypointIndex >= WayPointManager.GetSize()-1) {
-
 			Cmddeath ();
-		} else {
+		} 
+		else {
 			waypointIndex++;
 			GetComponent<NavMeshAgent> ().destination =  WayPointManager.GetWayPoints(waypointIndex);
 		}

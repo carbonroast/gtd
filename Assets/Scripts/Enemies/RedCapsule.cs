@@ -12,10 +12,10 @@ public class RedCapsule : Enemy {
 		gameObject.layer = Mathf.RoundToInt(Mathf.Log(type.value, 2));
 
 	}
-
+	/*
 	public override void Movement(){
 		base.enemy.speed = speed;
 		base.enemy.acceleration = 2;
 
-	}
+	}*/
 }
