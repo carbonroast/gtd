@@ -25,6 +25,9 @@ public class Enemy : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (!isServer) {
+			return;
+		}
 		setup ();
 		//Debug.Log ("waypoint size =" + WayPointManager.GetSize ());
 		gameObject.tag = "Enemy";
@@ -35,14 +38,17 @@ public class Enemy : NetworkBehaviour {
 
 
 
-		_ID = GetComponent<NetworkIdentity> ().netId.ToString();
+		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
 		EnemyManager.RegisterEnemy (_ID, this.gameObject);
-
+		CmdRename (transform.name);
 
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (!isServer) {
+			return;
+		}
 		Vector3 dir = GetComponent<NavMeshAgent> ().destination - transform.position;
 		transform.Translate (dir.normalized * speed*Time.deltaTime,Space.World);
 		Vector3.Distance ( WayPointManager.GetWayPoints(waypointIndex), transform.position);
@@ -77,6 +83,14 @@ public class Enemy : NetworkBehaviour {
 		}
 
 	}	
+/*********************************************************** Command ************************************************/
+	[Command]
+	public void CmdRename(string name){
+		transform.name = name;
+		RpcRename (name);
+	}
+
+
 
 	[Command]
 	public void CmdChangeHP(int amount){
@@ -96,13 +110,19 @@ public class Enemy : NetworkBehaviour {
 		EnemyManager.DestroyEnemy (transform.name);
 		Rpcdeath ();
 
-		NetworkServer.Destroy (this.gameObject);
 
+
+	}
+/*********************************************************** ClientRpc ************************************************/
+	[ClientRpc]
+	void RpcRename(string name){
+		transform.name = name;
 	}
 
 	[ClientRpc]
 	void Rpcdeath(){
 		EnemyManager.DestroyEnemy (transform.name);
-
+		NetworkServer.Destroy (this.gameObject);
 	}
+
 }

@@ -10,6 +10,9 @@ public class WayPoints : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (!isServer) {
+			return;
+		}
 		Path ();
 	}
 

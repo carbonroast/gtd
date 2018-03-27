@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
-	//private const string cubeIdPrefix = "Cube ";
 	private static Dictionary <string, GameObject> enimies = new Dictionary<string, GameObject>();
 
 

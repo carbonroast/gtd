@@ -23,16 +23,25 @@ public class Projectile : NetworkBehaviour {
 
 
 	void Start(){
+		if (!isServer) {
+			return;
+		}
 		gameObject.GetComponent<BoxCollider>().isTrigger = isTrigger;
+		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
+		transform.name = "projectile ";
+		ProjectileManager.RegisterProjectile (_ID, this.gameObject);
+		CmdRename (transform.name);
 
 	}
 
 	void FixedUpdate(){
-
+		if (!isServer) {
+			return;
+		}
 		if(target != null){
 			direction = target.position - transform.position;
 			distanceThisFrame = projectileSpeed * Time.deltaTime;
-			if(direction.magnitude <= distanceThisFrame){
+			if(direction.magnitude <= distanceThisFrame && target != null){
 				TargetHit();
 				return;
 			}
@@ -47,11 +56,25 @@ public class Projectile : NetworkBehaviour {
 	}
 
 	public virtual void TargetHit(){
-		Debug.Log ("hit");
+		if (!isServer) {
+			return;
+		}
+		//Debug.Log ("hit");
 		//Destroy(gameObject);
 		Enemy e = target.GetComponent<Enemy>();
 		e.CmdChangeHP(damage);
-		Destroy (gameObject);
+		gameObject.SetActive(false);
+	}
+
+	[Command]
+	public void CmdRename(string name){
+		transform.name = name;
+		RpcRename (name);
+	}
+
+	[ClientRpc]
+	void RpcRename(string name){
+		transform.name = name;
 	}
 
 
