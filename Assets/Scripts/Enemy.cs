@@ -62,7 +62,7 @@ public class Enemy : NetworkBehaviour {
 		enemy.speed = speed; 
 		//Debug.Log (enemy.speed);
 
-		if(distanceLeft <= 1.2f){
+		if(distanceLeft <= 1.0f){
 			GetNextWayPoint(); //Get next Ayyyy point
 		}
 

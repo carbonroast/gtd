@@ -41,29 +41,40 @@ public class Projectile : NetworkBehaviour {
 		if(target != null){
 			direction = target.position - transform.position;
 			distanceThisFrame = projectileSpeed * Time.deltaTime;
-			if(direction.magnitude <= distanceThisFrame && target != null){
-				TargetHit();
-				return;
-			}
 			transform.Translate (direction.normalized * distanceThisFrame, Space.World);
+
+			/*possible ground targeting
+			if(direction.magnitude <= distanceThisFrame && target != null){
+				
+				return;
+			}*/
+
 
 		}
 		else{
-			Destroy(gameObject);
+			NetworkServer.Destroy(gameObject);
 			return;
 		}
 
 	}
+	void OnTriggerEnter(Collider other){
+		Debug.Log ("trigger");
+		if (other.transform == target) {
+			TargetHit();
+			Debug.Log ("HIT");
+		}
+	}
+	public virtual void Shooting(){
+
+	}
 
 	public virtual void TargetHit(){
-		if (!isServer) {
-			return;
-		}
-		//Debug.Log ("hit");
+
+		//Debug.Log ("trigger");
 		//Destroy(gameObject);
 		Enemy e = target.GetComponent<Enemy>();
 		e.CmdChangeHP(damage);
-		gameObject.SetActive(false);
+		NetworkServer.Destroy(this.gameObject);
 	}
 
 	[Command]
