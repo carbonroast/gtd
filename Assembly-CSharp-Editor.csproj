@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\TileMapInspector.cs" />
      <Compile Include="Assets\NavMeshComponents\Editor\NavMeshComponentsGUIUtility.cs" />
      <Compile Include="Assets\NavMeshComponents\Editor\NavMeshLinkEditor.cs" />
      <Compile Include="Assets\NavMeshComponents\Editor\NavMeshModifierEditor.cs" />

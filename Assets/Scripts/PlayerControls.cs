@@ -33,22 +33,16 @@ public class PlayerControls : NetworkBehaviour {
 
 	}
 
+/*********************************************************** Command ************************************************/
 	//Spawns the builder gameobject with authority
 	[Command]
 	void CmdSpawnBuilder(){
 		GameObject go = Instantiate (BuilderPrefab);
-
-
-
 		NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
 		string _ID = go.GetComponent<NetworkIdentity>().netId.ToString();
 		go.transform.name = "Builder " + _ID;
 
 	}
-
-
-
-
 }
 
 

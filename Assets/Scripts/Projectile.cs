@@ -58,10 +58,10 @@ public class Projectile : NetworkBehaviour {
 
 	}
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("trigger");
+		//Debug.Log ("trigger");
 		if (other.transform == target) {
 			TargetHit();
-			Debug.Log ("HIT");
+			//Debug.Log ("HIT");
 		}
 	}
 	public virtual void Shooting(){
@@ -77,12 +77,14 @@ public class Projectile : NetworkBehaviour {
 		NetworkServer.Destroy(this.gameObject);
 	}
 
+/*********************************************************** Command ************************************************/
 	[Command]
 	public void CmdRename(string name){
 		transform.name = name;
 		RpcRename (name);
 	}
 
+/*********************************************************** ClientRpc ************************************************/
 	[ClientRpc]
 	void RpcRename(string name){
 		transform.name = name;

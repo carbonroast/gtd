@@ -7,8 +7,8 @@ public class CreateWorld : NetworkBehaviour {
 	public GameObject tile;
 	public GameObject selectionSquare;
 	public GameObject tetherRange;
-	public int xSize;
-	public int ySize;
+	private int xSize = 50;
+	private int ySize = 44;
 	private WaitForSeconds m_StartWait;
 
 	 void Start () {
@@ -21,21 +21,17 @@ public class CreateWorld : NetworkBehaviour {
 
 	[Command]
 	public void CmdSpawnWorld(){
+		GameObject parent = new GameObject ();
+		parent.name = "Grid";
 		for (int i = 0; i < xSize; i++) {
 			for (int j = 0; j < ySize; j++) {
-				GameObject childObject = (GameObject)Instantiate (tile);
-				childObject.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
-			
-				NetworkServer.Spawn (childObject);
-
-
+				GameObject gridBlock = (GameObject)Instantiate (tile);
+					gridBlock.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
+					NetworkServer.Spawn (gridBlock);
 			}
 		}
-	
 		print ("CmdSpawnWorld : World Created");
 	}
-
-
 
 
 

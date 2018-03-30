@@ -9,7 +9,6 @@ public class Spawn : NetworkBehaviour {
 	public float interval;
 	private int waveNumber;
 	private float temp;
-	// Use this for initialization
 
 
 	void Start(){
@@ -18,7 +17,7 @@ public class Spawn : NetworkBehaviour {
 		}
 		temp = interval;
 	}
-	// Update is called once per frame
+
 	void Update () {
 		if (!isServer) {
 			return;
@@ -31,6 +30,7 @@ public class Spawn : NetworkBehaviour {
 		interval -= Time.deltaTime;
 	}
 
+/*********************************************************** Command ************************************************/
 	[Command]
 	void CmdSpawnNext(){
 		GameObject enemy = (GameObject)Instantiate (enemyPrefab);

@@ -66,6 +66,7 @@ public class Unit : NetworkBehaviour {
 
 	}
 
+/*********************************************************** Command ************************************************/
 	[Command]
 	void CmdChangeName(string n){
 		Debug.Log("CmdChangeName: " + n);
@@ -73,6 +74,7 @@ public class Unit : NetworkBehaviour {
 		RpcChangeName (transform.name);
 	}
 
+/*********************************************************** ClientRpc ************************************************/
 	[ClientRpc]
 	void RpcChangeName(string n){
 		Debug.Log ("RpcChangeName: " + n);

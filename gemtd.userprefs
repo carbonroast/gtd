@@ -1,19 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Editor\TileMapInspector.cs">
     <Files>
-      <File FileName="Assets\Scripts\Unit.cs" Line="28" Column="3" />
-      <File FileName="Assets\Scripts\TowerManager.cs" Line="35" Column="5" />
-      <File FileName="Assets\Scripts\CreateWorld.cs" Line="12" Column="37" />
-      <File FileName="Assets\Scripts\Spawn.cs" Line="35" Column="19" />
-      <File FileName="Assets\Scripts\EnemyManager.cs" Line="23" Column="3" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="98" Column="11" />
-      <File FileName="Assets\Scripts\Enemies\RedCapsule.cs" Line="16" Column="34" />
-      <File FileName="Assets\Scripts\Tower.cs" Line="69" Column="11" />
-      <File FileName="Assets\Scripts\Projectile.cs" Line="66" Column="30" />
-      <File FileName="Assets\Scripts\ProjectileManager.cs" Line="13" Column="46" />
-      <File FileName="Assets\Scripts\PlayerControls.cs" Line="9" Column="26" />
-      <File FileName="Assets\Scripts\Tile.cs" Line="27" Column="25" />
+      <File FileName="Assets\Scripts\Tile Data\TDTile.cs" Line="12" Column="1" />
+      <File FileName="Assets\Scripts\Tile Data\TDMap.cs" Line="19" Column="26" />
+      <File FileName="Assets\Scripts\Tile Graphics\TGMap.cs" Line="82" Column="30" />
+      <File FileName="Assets\Editor\TileMapInspector.cs" Line="15" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

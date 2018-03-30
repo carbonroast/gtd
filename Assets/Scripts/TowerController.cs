@@ -49,6 +49,8 @@ public class TowerController : NetworkBehaviour {
 			CmdSpawnTower (hit.collider.name);
 		}
 	}
+
+/*********************************************************** Command ************************************************/
 	[Command]
 	void CmdSpawnTower(string tile){
 		GameObject _go = TilesManager.GetTiles (tile);

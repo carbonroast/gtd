@@ -20,8 +20,5 @@ public class WayPoints : NetworkBehaviour {
 		for (int i = 0; i < transform.childCount; i++) {
 			WayPointManager.RegisterWayPoints (transform.GetChild (i).transform.position);
 		}
-
-
-
 	}
 }

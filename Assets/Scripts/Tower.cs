@@ -65,7 +65,7 @@ public class Tower : NetworkBehaviour {
 		}	
 	}
 
-
+/*********************************************************** Command ************************************************/
 	[Command]
 	public virtual void CmdAttack(){
 		if(targetQueue.Length != 0){

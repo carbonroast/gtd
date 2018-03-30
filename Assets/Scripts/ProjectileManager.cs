@@ -19,7 +19,7 @@ public class ProjectileManager : MonoBehaviour {
 	}
 
 	public static void DisableProjectile(string projectileID){
-		//projectiles.Remove (enemyID);
+		projectiles.Remove (projectileID);
 	}
 
 }

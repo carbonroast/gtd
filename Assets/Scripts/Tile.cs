@@ -34,6 +34,7 @@ public class Tile : NetworkBehaviour {
 
 	}
 
+/*********************************************************** Command ************************************************/
 	[Command]
 	public void CmdRename(string name){
 		transform.name = name;
@@ -41,20 +42,20 @@ public class Tile : NetworkBehaviour {
 		RpcRename (name);
 	}
 
+/*********************************************************** ClientRpc ************************************************/
 	[ClientRpc]
 	void RpcRename(string name){
 		transform.name = name;
 
 
 	}
+
+/*********************************************************** IEnumerator ************************************************/
 	private IEnumerator Setup( string name)
 	{
-		
 		//wait to be sure that all are ready to start
 		yield return m_StartWait;
 		CmdRename (name);
-		// Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
-
 	}
 
 }
