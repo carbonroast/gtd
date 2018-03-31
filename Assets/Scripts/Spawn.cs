@@ -22,6 +22,7 @@ public class Spawn : NetworkBehaviour {
 		if (!isServer) {
 			return;
 		}
+
 		if (interval <= 0) {
 			CmdSpawnNext ();
 			interval = temp;
@@ -33,8 +34,11 @@ public class Spawn : NetworkBehaviour {
 /*********************************************************** Command ************************************************/
 	[Command]
 	void CmdSpawnNext(){
+		//Local
 		GameObject enemy = (GameObject)Instantiate (enemyPrefab);
 		enemy.transform.position = WayPointManager.GetWayPoints (0);
+
+		//Network
 		NetworkServer.Spawn (enemy);
 
 	}

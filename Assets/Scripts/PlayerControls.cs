@@ -25,6 +25,7 @@ public class PlayerControls : NetworkBehaviour {
 		if (!isLocalPlayer) {
 			return;
 		}
+
 		if (Input.GetKeyDown ("d")) {
 			CmdSpawnBuilder ();
 		}

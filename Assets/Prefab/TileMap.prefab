@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4260531494870786}
-  - component: {fileID: 64623042295936546}
-  - component: {fileID: 23836920095538144}
-  - component: {fileID: 33045294223349652}
-  - component: {fileID: 114727890835000644}
+  - component: {fileID: 23118112209742558}
+  - component: {fileID: 64841444334500122}
+  - component: {fileID: 33855334138958472}
+  - component: {fileID: 114210052000016804}
   m_Layer: 0
   m_Name: TileMap
   m_TagString: Untagged
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23836920095538144
+--- !u!23 &23118112209742558
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 738d5398ef7bbef45a4d66754a84dcc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,14 +75,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33045294223349652
+--- !u!33 &33855334138958472
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1253001867613156}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64623042295936546
+  m_Mesh: {fileID: 0}
+--- !u!64 &64841444334500122
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,7 +96,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
---- !u!114 &114727890835000644
+--- !u!114 &114210052000016804
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b77a6ca42506c40b392bb67686c535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size_x: 100
-  size_z: 50
+  size_x: 30
+  size_z: 30
   tileSize: 1
   terrainTiles: {fileID: 2800000, guid: 52a199af14ef3c641bc959e66c43cbd1, type: 3}
   tileResolution: 16

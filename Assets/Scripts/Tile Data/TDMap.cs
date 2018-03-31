@@ -1,23 +1,43 @@
-﻿
+﻿using UnityEngine;
 public class TDMap  {
 
+	TDTile[,] _tiles;
+	int width;
+	int height;
+	public TDTile tileType;
 
-	int size_x;
-	int size_y;
-	int[,] map_data;
+	public enum tile {
+		Water,
+		grassland,
+		plains,
+		mountain
+	};
 
 
-	public TDMap(int size_x, int size_y){
-		this.size_x = size_x;
-		this.size_y = size_y;
+	public TDMap(int width, int height){
+		this.width = width;
+		this.height = height;
 
-		map_data = new int[size_x, size_y];
+		_tiles = new TDTile[width , height];
+
+
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				_tiles [x, y] = new TDTile ();
+				_tiles [x, y].type = (int)tile.mountain;
+			}
+		}
 
 
 	}
 
-	public int GetTileAt(int x, int y){
-		return map_data [x, y];
+	public TDTile GetTileAt(int x, int y){
+		if (x < 0 || x >= width || y < 0 || y >= height) {
+			Debug.Log ("Out of Bounds");
+		}
+		return  _tiles [x , y];
 	}
+
+
 
 }

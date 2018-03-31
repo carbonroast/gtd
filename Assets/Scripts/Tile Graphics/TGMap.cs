@@ -20,21 +20,6 @@ public class TGMap : MonoBehaviour {
 		BuildMesh ();
 	}
 
-	Color[][] ChopUpTiles(){
-		int numTilesPerRow = terrainTiles.width / tileResolution;
-		int numRows = terrainTiles.height / tileResolution;
-
-		Color[][] tiles = new Color[numTilesPerRow * numRows][];
-
-		for (int y = 0; y < numRows; y++) {
-			for (int x = 0; x < numTilesPerRow; x++) {
-				tiles [y * numTilesPerRow + x] = terrainTiles.GetPixels (x * tileResolution, y * tileResolution, tileResolution, tileResolution);
-			}
-		}
-
-		return tiles;
-	}
-
 
 	public void BuildMesh(){
 
@@ -54,12 +39,11 @@ public class TGMap : MonoBehaviour {
 		int[] triangles = new int[ numTris * 3];
 
 		int x, z;
-
 		for (z = 0; z < vsize_z; z++) {
 			for (x = 0; x < vsize_x; x++) {
 				vertices [z * vsize_x + x] = new Vector3 (x * tileSize, 0, -z * tileSize);
 				normals [z * vsize_x + x] = Vector3.up;
-				uv [z * vsize_x + x] = new Vector2 ((float)x / size_x, (float)z / size_z);
+				uv [z * vsize_x + x] = new Vector2 ((float)x / size_x, 1f - (float)z / size_z);
 			}
 		}
 
@@ -73,7 +57,7 @@ public class TGMap : MonoBehaviour {
 
 				triangles [triOffSet + 3] = z * vsize_x + x +			0;
 				triangles [triOffSet + 5] = z * vsize_x + x + vsize_x + 1;
-				triangles [triOffSet + 4] = z * vsize_x + x + vsize_x +	1;
+				triangles [triOffSet + 4] = z * vsize_x + x + 			1;
 			}
 		}
 
@@ -93,7 +77,10 @@ public class TGMap : MonoBehaviour {
 	}
 
 	void BuildTexture(){
+		
 		TDMap map = new TDMap (size_x, size_z);
+
+
 
 		int texWidth = size_x * tileResolution;
 		int texHeight = size_z * tileResolution;
@@ -103,7 +90,8 @@ public class TGMap : MonoBehaviour {
 
 		for (int y = 0; y < size_z; y++) {
 			for (int x = 0; x < size_x; x++) {
-				Color[] p = tiles [map.GetTileAt (x, y)];
+				//Color[] p = tiles [1];
+				Color[] p = tiles [map.GetTileAt(x,y).type];
 				texture.SetPixels (x * tileResolution, y * tileResolution, tileResolution, tileResolution, p);
 			}
 		}
@@ -116,6 +104,21 @@ public class TGMap : MonoBehaviour {
 		mesh_renderer.sharedMaterials[0].mainTexture = texture;
 
 		Debug.Log ("Texture Finished!");
+	}
+
+	Color[][] ChopUpTiles(){
+		int numTilesPerRow = terrainTiles.width / tileResolution;
+		int numRows = terrainTiles.height / tileResolution;
+
+		Color[][] tiles = new Color[numTilesPerRow * numRows][];
+
+		for (int y = 0; y < numRows; y++) {
+			for (int x = 0; x < numTilesPerRow; x++) {
+				tiles [y * numTilesPerRow + x] = terrainTiles.GetPixels (x * tileResolution, y * tileResolution, tileResolution, tileResolution);
+			}
+		}
+
+		return tiles;
 	}
 
 }

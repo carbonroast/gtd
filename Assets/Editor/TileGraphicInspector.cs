@@ -3,14 +3,11 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(TGMap))]
-public class TileMapInspector : Editor {
-	float v = .5f;
+public class TileGraphicInspector : Editor {
 	public override void OnInspectorGUI(){
 		DrawDefaultInspector ();
 
-		EditorGUILayout.BeginVertical ();
-		v = EditorGUILayout.Slider (v, 0, 2.0f);
-		EditorGUILayout.EndVertical ();
+
 
 		if (GUILayout.Button ("Regenerate")) {
 			TGMap tileMap = (TGMap)target;
