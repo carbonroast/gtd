@@ -5,18 +5,22 @@ using UnityEngine;
 public class TilesManager : MonoBehaviour {
 	
 	//private const string cubeIdPrefix = "Cube ";
-	private static Dictionary <string, GameObject> _tiles = new Dictionary<string, GameObject>();
+	private static Dictionary <string, GameObject> _tileMap = new Dictionary<string, GameObject>();
 
 
-	public static void RegisterTiles (string _netID, GameObject _BuildPlaceLocationGO){
-		string _cubeID = _BuildPlaceLocationGO.transform.name + _netID;
-		_tiles.Add (_cubeID, _BuildPlaceLocationGO);
-		_BuildPlaceLocationGO.transform.name = _cubeID;
+	public static void RegisterMap (string _netID, GameObject _tilemapGO){
+		string _mapTiles = "MapTile " + _netID;
+		_tileMap.Add (_mapTiles, _tilemapGO);
+		_tilemapGO.transform.name = _mapTiles;
 	}
 
 
-	public static GameObject GetTiles(string _cubeID){
-		return _tiles [_cubeID];
+	public static GameObject GetMap(string name){
+		return _tileMap [name];
+	}
+
+	public static TDTile GetTile(string name, int x, int y){
+		return _tileMap [name].GetComponent<TGMap>().map.GetTileAt(x,y);
 	}
 
 	/*

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class CreateWorld : NetworkBehaviour {
 
-	public GameObject tile;
+	public GameObject tiles;
 	public GameObject selectionSquare;
 	public GameObject tetherRange;
 	private int xSize = 50;
@@ -21,15 +21,15 @@ public class CreateWorld : NetworkBehaviour {
 
 	[Command]
 	public void CmdSpawnWorld(){
-		GameObject parent = new GameObject ();
-		parent.name = "Grid";
-		for (int i = 0; i < xSize; i++) {
-			for (int j = 0; j < ySize; j++) {
-				GameObject gridBlock = (GameObject)Instantiate (tile);
-					gridBlock.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
-					NetworkServer.Spawn (gridBlock);
-			}
-		}
+		//GameObject tileMap = (GameObject)Instantiate (tiles);
+		//NetworkServer.Spawn (tileMap);
+//		for (int i = 0; i < xSize; i++) {
+//			for (int j = 0; j < ySize; j++) {
+//				GameObject gridBlock = (GameObject)Instantiate (tile);
+//					gridBlock.transform.position = new Vector3 (i+(float).5, (float)-.5,j+(float).5);
+//					
+//			}
+//		}
 		print ("CmdSpawnWorld : World Created");
 	}
 

@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
-public class TGMap : MonoBehaviour {
+public class TGMap : NetworkBehaviour {
 
 	public int size_x= 100;
 	public int size_z = 50;
@@ -14,9 +15,12 @@ public class TGMap : MonoBehaviour {
 
 	public Texture2D terrainTiles;
 	public int tileResolution;
-
+	public TDMap map;
 	// Use this for initialization
 	void Start () {
+		if (!isServer) {
+			return;
+		}
 		BuildMesh ();
 	}
 
@@ -78,7 +82,11 @@ public class TGMap : MonoBehaviour {
 
 	void BuildTexture(){
 		
-		TDMap map = new TDMap (size_x, size_z);
+		map = new TDMap (size_x, size_z);
+
+		//string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
+		//TilesManager.RegisterEnemy (_ID, this.gameObject);
+		//CmdRename (transform.name);
 
 
 
@@ -86,15 +94,20 @@ public class TGMap : MonoBehaviour {
 		int texHeight = size_z * tileResolution;
 		Texture2D texture = new Texture2D (texWidth, texHeight);
 
+
 		Color[][] tiles = ChopUpTiles ();
 
 		for (int y = 0; y < size_z; y++) {
 			for (int x = 0; x < size_x; x++) {
-				//Color[] p = tiles [1];
 				Color[] p = tiles [map.GetTileAt(x,y).type];
 				texture.SetPixels (x * tileResolution, y * tileResolution, tileResolution, tileResolution, p);
 			}
+
 		}
+
+		Color[] pa = tiles [1];
+		texture.SetPixels (3 * tileResolution, 3 * tileResolution, tileResolution, tileResolution, pa);
+		map.GetTileAt (3, 3).type = 1;
 
 		texture.filterMode = FilterMode.Point;
 		texture.wrapMode = TextureWrapMode.Clamp;
@@ -102,6 +115,10 @@ public class TGMap : MonoBehaviour {
 
 		MeshRenderer mesh_renderer = GetComponent<MeshRenderer> ();
 		mesh_renderer.sharedMaterials[0].mainTexture = texture;
+
+		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
+		this.transform.name = "MapTile " + _ID;
+		TilesManager.RegisterMap (_ID, this.gameObject);
 
 		Debug.Log ("Texture Finished!");
 	}

@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\Tile Data\TDMap.cs" />
      <Compile Include="Assets\Scripts\Tile Data\TDTile.cs" />
      <Compile Include="Assets\Scripts\Tile Graphics\TGMap.cs" />
+     <Compile Include="Assets\Scripts\Tile Graphics\TileMouseOver.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\TilesManager.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />

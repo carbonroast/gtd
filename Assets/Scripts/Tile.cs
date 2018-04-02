@@ -22,7 +22,7 @@ public class Tile : NetworkBehaviour {
 		canBuild = true;
 		transform.name = "Cube ";
 		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
-		TilesManager.RegisterTiles (_ID, this.gameObject);
+		//TilesManager.RegisterTiles (_ID, this.gameObject);
 		m_StartWait = new WaitForSeconds(3.0f);
 		StartCoroutine (Setup(transform.name));
 
