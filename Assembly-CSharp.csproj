@@ -97,6 +97,7 @@
      <Compile Include="Assets\Scripts\TowerManager.cs" />
      <Compile Include="Assets\Scripts\Towers\Tower3.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
+     <Compile Include="Assets\Scripts\Utils.cs" />
      <Compile Include="Assets\Scripts\WayPointManager.cs" />
      <Compile Include="Assets\Scripts\WayPoints.cs" />
      <None Include="Assets\Lobby\Documentation.txt" />

@@ -16,13 +16,19 @@ public class TGMap : NetworkBehaviour {
 	public Texture2D terrainTiles;
 	public int tileResolution;
 	public TDMap map;
+
+	private WaitForSeconds m_StartWait;
+
 	// Use this for initialization
 	void Start () {
-		if (!isServer) {
+		if (!isClient) {
 			return;
 		}
-		BuildMesh ();
+		m_StartWait = new WaitForSeconds(3.0f);
+		StartCoroutine (Setup());
+
 	}
+
 
 
 	public void BuildMesh(){
@@ -99,15 +105,14 @@ public class TGMap : NetworkBehaviour {
 
 		for (int y = 0; y < size_z; y++) {
 			for (int x = 0; x < size_x; x++) {
-				Color[] p = tiles [map.GetTileAt(x,y).type];
+				Color[] p = tiles [(int)map.GetTileAt(x,y).TileType];
 				texture.SetPixels (x * tileResolution, y * tileResolution, tileResolution, tileResolution, p);
 			}
-
 		}
 
 		Color[] pa = tiles [1];
 		texture.SetPixels (3 * tileResolution, 3 * tileResolution, tileResolution, tileResolution, pa);
-		map.GetTileAt (3, 3).type = 1;
+		map.GetTileAt (3, 3).TileType = TileType.Grassland;
 
 		texture.filterMode = FilterMode.Point;
 		texture.wrapMode = TextureWrapMode.Clamp;
@@ -117,7 +122,7 @@ public class TGMap : NetworkBehaviour {
 		mesh_renderer.sharedMaterials[0].mainTexture = texture;
 
 		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
-		this.transform.name = "MapTile " + _ID;
+		this.transform.name = "TileMap " + _ID;
 		TilesManager.RegisterMap (_ID, this.gameObject);
 
 		Debug.Log ("Texture Finished!");
@@ -137,5 +142,14 @@ public class TGMap : NetworkBehaviour {
 
 		return tiles;
 	}
+
+	/*********************************************************** IEnumerator ************************************************/
+	private IEnumerator Setup()
+	{
+		//wait to be sure that all are ready to start
+		yield return m_StartWait;
+		BuildMesh ();
+	}
+
 
 }

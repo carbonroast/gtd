@@ -35,62 +35,99 @@ public class TowerController : NetworkBehaviour {
 			GetMousePosition ();
 		}
 
-		if (Input.GetKeyDown ("r")) {
-			ray ();
-		}
 	}
 
+/*********************************************************** Client *************************************************/
 	//client only getting click
 	[Client]
 	void GetMousePosition(){
 		Ray ray = GetComponentInChildren<Camera>().ScreenPointToRay (Input.mousePosition);
 		Debug.DrawRay(ray.origin, ray.direction * 30,Color.red, 30);
 		RaycastHit hit;
-		//Debug.Log ("TowerController : " + transform.name + " clicked " + Input.mousePosition);
-		if (Physics.Raycast (ray, out hit, 100f, Tile.value)) {
-			Debug.Log ("TowerController : " + "Has hit " + hit.collider.name);
-			CmdSpawnTower (hit.collider.name);
-		}
-	}
 
-	void ray(){
-		Debug.Log ("click");
-		Ray ray = GetComponentInChildren<Camera>().ScreenPointToRay  (Input.mousePosition);
-		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit, 100f, Tile.value)) {
-			string name = hit.collider.name;
+			//Graphic
+			Vector3 location = hit.point;
+
+			//Data
 			Renderer rend = hit.collider.GetComponent<Renderer> ();
 			Texture2D texture = (Texture2D)rend.material.mainTexture;
 			Vector2 pixelUV = hit.textureCoord;
-			int x = (int)(pixelUV.x * rend.material.mainTexture.width) / 16;
-			int y = (int)(pixelUV.y * rend.material.mainTexture.height) / 16;
-			Debug.Log ("Hit Point : " + x + "--" + y);
-			Debug.Log(TilesManager.GetTile(name,x,y).type);
+			Vector2 gridTile = new Vector2((float)(pixelUV.x * rend.material.mainTexture.width) / 16, (float)(pixelUV.y * rend.material.mainTexture.height) / 16);
+			Debug.Log (gridTile.x + "-" + gridTile.y);
+			CmdSpawnTower (hit.collider.name,location,gridTile);
+
 		}
 
+//
+//
+//
+//			//Debug.Log (hit.point);
+//
+
+//		}
 	}
+
+	void CheckSurroundingTiles(string tileMap,Vector3 location, Vector2 pixelUV, Renderer rend){
+		//Graphics
+		Vector3[] buildCheckG = new [] {
+			new Vector3 (location.x + .5f, 0f, location.z + .5f), 	//Top right
+			new Vector3 (location.x - .5f, 0f, location.z + .5f), 	//Top Left
+			new Vector3 (location.x + .5f, 0f, location.z - .5f), 	//Bottom Right
+			new Vector3 (location.x - .5f, 0f, location.z - .5f) 	//Bottom Left
+		};
+
+		//Data
+		Vector2[] buildCheckD = new [] {
+			new Vector2 ((float)((pixelUV.x * rend.material.mainTexture.width) / 16) + .5f, (float)((pixelUV.y * rend.material.mainTexture.height) / 16) + .5f),	//Top right
+			new Vector2 ((float)((pixelUV.x * rend.material.mainTexture.width) / 16) - .5f, (float)((pixelUV.y * rend.material.mainTexture.height) / 16) + .5f),	//Top Left
+			new Vector2 ((float)((pixelUV.x * rend.material.mainTexture.width) / 16) + .5f, (float)((pixelUV.y * rend.material.mainTexture.height) / 16) - .5f),	//Bottom Right
+			new Vector2 ((float)((pixelUV.x * rend.material.mainTexture.width) / 16) - .5f, (float)((pixelUV.y * rend.material.mainTexture.height) / 16) - .5f) 	//Bottom Left
+		};
+
+		//Graphics
+		foreach (Vector3 surroundingTile in buildCheckG) {
+
+		}
+
+		//Data
+		foreach (Vector2 surroundingTile in buildCheckD) {
+			int x = Mathf.RoundToInt (Mathf.Floor (surroundingTile.x));
+			int y = Mathf.RoundToInt (Mathf.Floor (surroundingTile.y));
+			TDTile tile = TilesManager.GetTile (tileMap, x, y);
+			Debug.Log ("tile[" + x + "][" + y + "].build is " + tile.build);
+		}
+	}
+
+
 
 
 /*********************************************************** Command ************************************************/
 	[Command]
-	void CmdSpawnTower(string tile){
-		//GameObject _go = TilesManager.GetTiles (tile);
+	void CmdSpawnTower(string tileMap, Vector3 location, Vector2 gridTile){
 
-		//bool canBuild =_go.GetComponent<Tile>().canBuild;
-//		if (canBuild) {
-//			GameObject go = (GameObject)Instantiate (towerone);
-//			//go.transform.position = TilesManager.GetTiles (tile).transform.position + towerone.transform.position;
-//
-//
-//			//TilesManager.GetTiles (tile).GetComponent<Tile> ().canBuild = false;
-//			NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
-//
-//
-//			//Debug.Log ("TowerController : " + "Has Built");
-//
-//		} else {
-//			Debug.Log ("Command : " + "Cant Build There");
-//		}
+
+		int x = Mathf.RoundToInt (Mathf.Floor (gridTile.x));
+		int y = Mathf.RoundToInt (Mathf.Floor (gridTile.y));
+
+		TDTile _tile = TilesManager.GetTile( tileMap, x,y);
+
+		bool canBuild = _tile.build;
+		if (canBuild) {
+			GameObject go = (GameObject)Instantiate (towerone);
+
+			go.transform.position = new Vector3(Mathf.Floor(location.x)+.5f,0.5f,Mathf.Floor(location.z)+.5f) + towerone.transform.position;
+
+
+			_tile.build = false;
+			NetworkServer.SpawnWithClientAuthority (go,connectionToClient);
+
+
+			//Debug.Log ("TowerController : " + "Has Built");
+
+		} else {
+			Debug.Log ("Command : " + "Cant Build There");
+		}
 
 	}
 		

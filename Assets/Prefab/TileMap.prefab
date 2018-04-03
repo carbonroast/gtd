@@ -22,7 +22,9 @@ GameObject:
   - component: {fileID: 23118112209742558}
   - component: {fileID: 64841444334500122}
   - component: {fileID: 33855334138958472}
-  - component: {fileID: 114210052000016804}
+  - component: {fileID: 114857977609650088}
+  - component: {fileID: 114910792746136932}
+  - component: {fileID: 114713026025837160}
   m_Layer: 0
   m_Name: TileMap
   m_TagString: Untagged
@@ -96,7 +98,55 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
---- !u!114 &114210052000016804
+--- !u!114 &114713026025837160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253001867613156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64e56f6a9d9e1f4ea5b1e50472ec44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  Tile:
+    serializedVersion: 2
+    m_Bits: 0
+  coll: {fileID: 0}
+--- !u!114 &114857977609650088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253001867613156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 190
+    i1: 62
+    i2: 160
+    i3: 214
+    i4: 201
+    i5: 204
+    i6: 155
+    i7: 52
+    i8: 58
+    i9: 195
+    i10: 39
+    i11: 64
+    i12: 7
+    i13: 184
+    i14: 253
+    i15: 254
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114910792746136932
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

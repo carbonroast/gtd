@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 public class TDMap  {
 
 	public TDTile[,] _tiles;
 	int width;
 	int height;
 	public TDTile tileType;
-	public enum tile {
-		Water,
-		grassland,
-		plains,
-		mountain
-	};
+
 
 
 
@@ -23,7 +19,9 @@ public class TDMap  {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				_tiles [x, y] = new TDTile ();
-				_tiles [x, y].type = (int)tile.mountain;
+
+				_tiles [x, y].TileType = (TileType)Random.Range (0, 3);
+
 			}
 		}
 

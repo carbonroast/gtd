@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerone: {fileID: 1033599867910844, guid: f5f5d7e9d1190c9439b4006cda9f8080, type: 2}
   towertwo: {fileID: 0}
-  BuildBlock:
+  Tile:
     serializedVersion: 2
     m_Bits: 256
 --- !u!114 &114969927452409656

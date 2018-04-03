@@ -1,14 +1,13 @@
-﻿
-
-public class TDTile  {
+﻿public class TDTile  {
 
 
 
-	public int type;
 	public bool build;
+	public TileType TileType;
 
 
 	public TDTile(){
+		build = true;
 	}
 
 }

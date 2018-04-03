@@ -1,10 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tile Data\TDMap.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tile Graphics\TGMap.cs">
     <Files>
-      <File FileName="Assets\Scripts\Tile Data\TDTile.cs" Line="10" Column="2" />
-      <File FileName="Assets\Scripts\Tile Data\TDMap.cs" Line="28" Column="4" />
-      <File FileName="Assets\Scripts\Tile Graphics\TGMap.cs" Line="106" Column="7" />
+      <File FileName="Assets\Scripts\Tile Data\TDTile.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\Tile Data\TDMap.cs" Line="34" Column="15" />
+      <File FileName="Assets\Scripts\Tile Graphics\TGMap.cs" Line="94" Column="35" />
+      <File FileName="Assets\Scripts\Tile Graphics\TileMouseOver.cs" Line="19" Column="6" />
+      <File FileName="Assets\Scripts\TowerController.cs" Line="62" Column="59" />
+      <File FileName="Assets\Scripts\TilesManager.cs" Line="21" Column="2" />
+      <File FileName="Assets\Scripts\EnemyManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
