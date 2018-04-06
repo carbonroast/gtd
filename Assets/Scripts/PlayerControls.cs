@@ -6,10 +6,6 @@ using UnityEngine.Networking;
 
 public class PlayerControls : NetworkBehaviour {
 
-	public GameObject tower;
-
-
-
 
 
 	public static bool newMouseOver;

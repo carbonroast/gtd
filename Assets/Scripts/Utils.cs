@@ -10,7 +10,8 @@ public enum TileType {
 		Mountain
 };
 
-public enum State{
+public enum State {
+	Idle,
 	Building,
 	Selecting
 }

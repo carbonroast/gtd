@@ -24,7 +24,7 @@ public class TGMap : NetworkBehaviour {
 		if (!isClient) {
 			return;
 		}
-		m_StartWait = new WaitForSeconds(3.0f);
+		m_StartWait = new WaitForSeconds(1.2f);
 		StartCoroutine (Setup());
 
 	}

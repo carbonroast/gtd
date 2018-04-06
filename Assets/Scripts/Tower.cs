@@ -24,22 +24,18 @@ public class Tower : NetworkBehaviour {
 	private float fireCountDown = 0f;
 
 	void Start () {
-		if (!isClient) {
-			return;
-		}
+
 		//canHit = LayerMask.NameToLayer ("Air");
 		Setup();
 		gameObject.GetComponent<SphereCollider> ().radius = range;
 		gameObject.GetComponent<SphereCollider> ().isTrigger = true;
-		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
-		TowerManager.RegisterTower (_ID, this.gameObject);
+
+
 	}
 
 
 	void Update () {
-		if (!isClient) {
-			return;
-		}
+
 	}
 
 
@@ -65,6 +61,11 @@ public class Tower : NetworkBehaviour {
 		}	
 	}
 
+	public void RegisterTower(){
+		string _ID = GetComponent<NetworkIdentity> ().netId.ToString();
+		TowerManager.RegisterTower (_ID, this.gameObject);
+		CmdRename (this.transform.name);
+	}
 /*********************************************************** Command ************************************************/
 	[Command]
 	public virtual void CmdAttack(){
@@ -78,5 +79,17 @@ public class Tower : NetworkBehaviour {
 		}
 	}
 
+	[Command]
+	public void CmdRename(string name){
+		transform.name = name;
+		RpcRename (name);
+	}
+
+
+
+	[ClientRpc]
+	void RpcRename(string name){
+		transform.name = name;
+	}
 
 }

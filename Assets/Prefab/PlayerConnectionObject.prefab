@@ -247,6 +247,8 @@ MonoBehaviour:
   Tile:
     serializedVersion: 2
     m_Bits: 256
+  previewGrid: {fileID: 1060509711681486, guid: 2ae8de0af04af7445815f14d8b991525,
+    type: 2}
 --- !u!114 &114969927452409656
 MonoBehaviour:
   m_ObjectHideFlags: 1
