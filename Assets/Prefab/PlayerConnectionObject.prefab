@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f2225e63869174db83731b9b02b047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 1033599867910844, guid: f5f5d7e9d1190c9439b4006cda9f8080, type: 2}
   BuilderPrefab: {fileID: 1586332705485562, guid: 109c384ea51713c47a2617e6dd6e4aab,
     type: 2}
 --- !u!114 &114890103011301668
@@ -248,6 +247,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   previewGrid: {fileID: 1060509711681486, guid: 2ae8de0af04af7445815f14d8b991525,
+    type: 2}
+  previewTower: {fileID: 1777960182730718, guid: 0bc9c17ded7e8b84f8962238c0f4fdce,
     type: 2}
 --- !u!114 &114969927452409656
 MonoBehaviour:

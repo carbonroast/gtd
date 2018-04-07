@@ -85,7 +85,7 @@ dc78624554e910c76d194ff50ce5b07a Assembly-CSharp.dll:Prototype.NetworkLobby.Lobb
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TilesManager
 9b44d20d09a16ce27aa57b1cc23ac0a9 Assembly-CSharp.dll:.CameraController
 ba3cc53b42be2cdfcc9e232d733bb32e Assembly-CSharp.dll:.Tower3
-bef554e8e90c0c7298979aebf80f5666 Assembly-CSharp.dll:.TowerController
+77e2e6c131fd09aba694cf2331597f76 Assembly-CSharp.dll:.TowerController
 feffea53bdfc9dc384dfc5a748d3460f Assembly-CSharp.dll:.TargetSelector
 7157f93afe4945c2a894cbffb1a14385 Assembly-CSharp.dll:.CreateWorld
 a94cb901c70277cd8693e11bc156d4d2 Assembly-CSharp.dll:.Unit
@@ -168,7 +168,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 669f9dbde574f920230271c202fa3002 Assembly-CSharp.dll:.Spawn
 1be52fb541d1fe19688de133e6306e00 Assembly-CSharp.dll:UnityEngine.AI.NavMeshSurface
 873ee486e26d4718f6bd9058cb38c0cf Assembly-CSharp.dll:.TGMap
-8f6a22c40634a683321f89266c3b9d22 Assembly-CSharp.dll:.PlayerControls
+5f601947a79ee36f66fae6d001b68b06 Assembly-CSharp.dll:.PlayerControls
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Prototype.NetworkLobby.DraggablePanel
 5cdd03a51679fbd8b2fa731b48ea1b50 Assembly-CSharp.dll:.Enemy
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ProjectileManager

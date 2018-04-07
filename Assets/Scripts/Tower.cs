@@ -29,7 +29,7 @@ public class Tower : NetworkBehaviour {
 		Setup();
 		gameObject.GetComponent<SphereCollider> ().radius = range;
 		gameObject.GetComponent<SphereCollider> ().isTrigger = true;
-
+		RegisterTower ();
 
 	}
 
@@ -40,7 +40,7 @@ public class Tower : NetworkBehaviour {
 
 
 	public virtual void Setup(){
-		transform.name = "Tower ";
+		transform.name = "tower ";
 
 	}
 

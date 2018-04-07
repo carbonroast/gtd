@@ -12,11 +12,13 @@ public class TowerController : NetworkBehaviour {
 
 	[SerializeField]
 	private GameObject previewGrid;
-
+	[SerializeField]
+	private GameObject previewTower;
 	private GameObject selectedTower;
 
 	private State state;
 	private RaycastHit mousePosition;
+	private GameObject pt;
 	//private RaycastHit hit;
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,6 @@ public class TowerController : NetworkBehaviour {
 		}
 		var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
 		var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-
 		transform.Rotate(0, x, 0);
 		transform.Translate(0, 0, z);
 
@@ -40,11 +41,12 @@ public class TowerController : NetworkBehaviour {
 
 		if (Input.GetKeyDown ("space")) {
 			state = State.Building;
-			selectedTower  = (GameObject)Instantiate (towerone);
-			GameObject pgParent = new GameObject ();
-			pgParent.transform.parent = selectedTower.transform;
+			pt = Instantiate (previewTower);
 
-			SetAlpha (selectedTower.GetComponent<Renderer> ().material, .3f);
+			GameObject pgParent = new GameObject ();
+			pgParent.transform.parent = pt.transform;
+
+			SetAlpha (pt.GetComponent<Renderer> ().material, .3f);
 
 			GameObject tr =(GameObject)Instantiate(previewGrid,new Vector3(.5f, -.4f, .5f),Quaternion.identity,pgParent.transform);
 			GameObject tl =(GameObject)Instantiate(previewGrid,new Vector3(-.5f, -.4f,.5f),Quaternion.identity,pgParent.transform);
@@ -55,7 +57,7 @@ public class TowerController : NetworkBehaviour {
 		}
 		if (state == State.Building) {
 			
-			BuildProcess (selectedTower);
+			BuildProcess (pt);
 		}
 
 	}
@@ -66,17 +68,7 @@ public class TowerController : NetworkBehaviour {
 		material.color = color;
 	}
 
-	//Vector2 DetermineLocation(Vector3 location){
-//		float xlow = location.x - .5;
-//		float xhigh = location.x + .5;
-//		float ylow = location.y - .5;
-//		float yhigh = location.y + .5;
-//
-//		if(Mathf.Floor(xlow)) {
-//
-//		}
 
-	//}
 
 /*********************************************************** Client *************************************************/
 	[Client]
@@ -136,8 +128,7 @@ public class TowerController : NetworkBehaviour {
 					}
 				}
 				if (canBuild) {
-					SetAlpha (selectedTower.GetComponent<Renderer> ().material, 1f);
-					CmdSpawnTower (tower, location);
+					CmdSpawnTower ( location);
 					foreach (Vector2 surroundingTile in buildCheckD) {
 						int x = Mathf.RoundToInt (Mathf.Floor (surroundingTile.x));
 						int y = Mathf.RoundToInt (Mathf.Floor (surroundingTile.y));
@@ -145,7 +136,7 @@ public class TowerController : NetworkBehaviour {
 						tile.build = false;
 						state = State.Idle;
 					}
-					Destroy (tower.transform.GetChild (tower.transform.childCount-1).gameObject);
+					Destroy (tower.gameObject);
 				} else {
 
 				}
@@ -158,15 +149,15 @@ public class TowerController : NetworkBehaviour {
 
 /*********************************************************** Command ************************************************/
 	[Command]
-	void CmdSpawnTower(GameObject tower, Vector3 location){
+	void CmdSpawnTower(Vector3 location){
 
+		selectedTower  = Instantiate (towerone);
 
+		selectedTower.transform.position = new Vector3(Mathf.RoundToInt(location.x),0.5f,Mathf.RoundToInt(location.z));
 
-		tower.transform.position = new Vector3(Mathf.RoundToInt(location.x),0.5f,Mathf.RoundToInt(location.z));
+		NetworkServer.SpawnWithClientAuthority (selectedTower,connectionToClient);
 
-		NetworkServer.SpawnWithClientAuthority (tower,connectionToClient);
-
-		tower.GetComponent<Tower> ().RegisterTower ();
+		//selectedTower.GetComponent<Tower> ().RegisterTower ();
 
 	}
 		
