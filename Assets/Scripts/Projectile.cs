@@ -14,11 +14,12 @@ public class Projectile : NetworkBehaviour {
 
 	[HideInInspector]
 	public Transform target;
+
 	public int damage;
 
-	private Vector3 direction;
-	private float distanceThisFrame;
-
+	public Vector3 direction;
+	public float distanceThisFrame;
+    public Vector3 lastPostion;
 
 
 
@@ -39,6 +40,7 @@ public class Projectile : NetworkBehaviour {
 			return;
 		}
 		if(target != null){
+            lastPostion = target.position;
 			direction = target.position - transform.position;
 			distanceThisFrame = projectileSpeed * Time.deltaTime;
 			transform.Translate (direction.normalized * distanceThisFrame, Space.World);
@@ -52,8 +54,14 @@ public class Projectile : NetworkBehaviour {
 
 		}
 		else{
-			NetworkServer.Destroy(gameObject);
-			return;
+            direction = lastPostion - transform.position;
+            distanceThisFrame = projectileSpeed * Time.deltaTime;
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+            if(Mathf.Abs( direction.x) <= 0.1f && Mathf.Abs(direction.z) <= 0.1f )
+            {
+                //Debug.Log("object dissapperad x: " + Mathf.Abs(direction.x )+ " z :" + Mathf.Abs(direction.z));
+                NetworkServer.Destroy(gameObject);
+            }
 		}
 
 	}
