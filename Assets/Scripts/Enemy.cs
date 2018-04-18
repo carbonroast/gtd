@@ -10,10 +10,12 @@ public class Enemy : NetworkBehaviour {
 	[SyncVar] public int hp;
 	[SyncVar] public int mana;
 	[SyncVar] public int damage;
+
 	[SyncVar] public float speed;
 	[SyncVar] public float lowestMinimumSpeed;
+    private float originalSpeed;
 
-	public LayerMask type;
+    public LayerMask type;
 	protected NavMeshAgent enemy;
 
 
@@ -69,6 +71,7 @@ public class Enemy : NetworkBehaviour {
 	}
 	void setup(){
 		transform.name = "enemy ";
+        originalSpeed = speed;
 	}
 
 	public virtual void Type(){
@@ -91,6 +94,11 @@ public class Enemy : NetworkBehaviour {
 		}
 
 	}	
+
+    void StatusEffects()
+    {
+
+    }
 /*********************************************************** Command ************************************************/
 	[Command]
 	public void CmdRename(string name){
@@ -98,14 +106,22 @@ public class Enemy : NetworkBehaviour {
 		RpcRename (name);
 	}
 
-
+    [Command]
+    public void CmdChangeMovement(int percent, float duration)
+    {
+        if (!isServer)
+        { //Nathan
+            return;
+        }
+        StartCoroutine(ChangeMovement(percent, duration));
+    }
 
 	[Command]
 	public void CmdChangeHP(int amount){
 		if (!isServer) { //Nathan
 			return;
 		}
-		hp = hp - amount  ;
+		hp = hp + amount  ;
 		if (hp <= 0) {
 			Cmddeath ();
 			return;
@@ -133,4 +149,24 @@ public class Enemy : NetworkBehaviour {
 		NetworkServer.Destroy (this.gameObject);
 	}
 
+
+
+
+    /*********************************************************** IEnumerator ************************************************/
+    private IEnumerator ChangeMovement(int percent, float duration)
+    {
+        float newspeed = speed * (1 + percent / 100);
+        if (newspeed <= lowestMinimumSpeed)
+        {
+            speed = lowestMinimumSpeed;
+
+        }
+        else
+        {
+            speed = newspeed;
+ 
+        }
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+    }
 }

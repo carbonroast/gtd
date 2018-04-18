@@ -81,7 +81,7 @@ public class Projectile : NetworkBehaviour {
 		//Debug.Log ("trigger");
 		//Destroy(gameObject);
 		Enemy e = target.GetComponent<Enemy>();
-		e.CmdChangeHP(damage);
+		e.CmdChangeHP(-damage);
 		NetworkServer.Destroy(this.gameObject);
 	}
 
